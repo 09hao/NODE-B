@@ -1,0 +1,9 @@
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_desc_template.c:124:10:USBD_Class_DeviceDescriptor	1
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_desc_template.c:136:10:USBD_Class_LangIDStrDescriptor	1
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_desc_template.c:148:10:USBD_Class_ProductStrDescriptor	2
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_desc_template.c:167:10:USBD_Class_ManufacturerStrDescriptor	1
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_desc_template.c:179:10:USBD_Class_SerialStrDescriptor	1
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_desc_template.c:195:10:USBD_Class_ConfigStrDescriptor	2
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_desc_template.c:214:10:USBD_Class_InterfaceStrDescriptor	2
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_desc_template.c:232:13:Get_SerialNum	2
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_desc_template.c:256:13:IntToUnicode	3
