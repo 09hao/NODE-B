@@ -3,11 +3,11 @@
 <title>Static Call Graph - [NODE B\NODE B.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image NODE B\NODE B.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Nov 05 01:29:04 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Dec 25 23:20:03 2025
 <BR><P>
-<H3>Maximum Stack Usage =       1072 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       1048 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; replay_task &rArr; lora_wait_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+__rt_entry_main &rArr; main &rArr; tx_task &rArr; tx_handle_rx_and_check_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 <P>
 <H3>
 Functions with no stack information
@@ -120,15 +120,15 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
-<P><STRONG><a name="[1ee]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[1f9]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[1ef]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[1fa]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[1f0]"></a>__decompress</STRONG> (Thumb, 90 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
+<P><STRONG><a name="[1fb]"></a>__decompress</STRONG> (Thumb, 90 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
 
-<P><STRONG><a name="[1f1]"></a>__decompress1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
+<P><STRONG><a name="[1fc]"></a>__decompress1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
 
-<P><STRONG><a name="[1f2]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
+<P><STRONG><a name="[1fd]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
 
 <P><STRONG><a name="[56]"></a>_printf_f</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, _printf_f.o(.ARM.Collect$$_printf_percent$$00000003))
 <BR><BR>[Stack]<UL><LI>Max Depth = 324 + Unknown Stack Size
@@ -169,31 +169,31 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_string
 </UL>
 
-<P><STRONG><a name="[1f3]"></a>_printf_percent_end</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, _printf_percent_end.o(.ARM.Collect$$_printf_percent$$00000017))
+<P><STRONG><a name="[1fe]"></a>_printf_percent_end</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, _printf_percent_end.o(.ARM.Collect$$_printf_percent$$00000017))
 
 <P><STRONG><a name="[66]"></a>__rt_lib_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit.o(.ARM.Collect$$libinit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
 </UL>
 
-<P><STRONG><a name="[1f4]"></a>__rt_lib_init_fp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000002))
+<P><STRONG><a name="[1ff]"></a>__rt_lib_init_fp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000002))
 
-<P><STRONG><a name="[1f5]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
+<P><STRONG><a name="[200]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
 
 <P><STRONG><a name="[5f]"></a>__rt_lib_init_lc_common</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000F))
 <BR><BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_locale
 </UL>
 
-<P><STRONG><a name="[1f6]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
+<P><STRONG><a name="[201]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
 
-<P><STRONG><a name="[1f7]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
+<P><STRONG><a name="[202]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
 
-<P><STRONG><a name="[1f8]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
+<P><STRONG><a name="[203]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
 
-<P><STRONG><a name="[1f9]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
+<P><STRONG><a name="[204]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
 
-<P><STRONG><a name="[1fa]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
+<P><STRONG><a name="[205]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
 
-<P><STRONG><a name="[1fb]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
+<P><STRONG><a name="[206]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
 
 <P><STRONG><a name="[61]"></a>__rt_lib_init_lc_numeric_2</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000016))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -202,56 +202,56 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_get_lc_numeric
 </UL>
 
-<P><STRONG><a name="[1fc]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
+<P><STRONG><a name="[207]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
 
-<P><STRONG><a name="[1fd]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
+<P><STRONG><a name="[208]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
 
-<P><STRONG><a name="[1fe]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
+<P><STRONG><a name="[209]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
 
-<P><STRONG><a name="[1ff]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
+<P><STRONG><a name="[20a]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
 
-<P><STRONG><a name="[200]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
+<P><STRONG><a name="[20b]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
 
-<P><STRONG><a name="[201]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
+<P><STRONG><a name="[20c]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
 
-<P><STRONG><a name="[202]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
+<P><STRONG><a name="[20d]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
 
-<P><STRONG><a name="[203]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
+<P><STRONG><a name="[20e]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
 
-<P><STRONG><a name="[204]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
+<P><STRONG><a name="[20f]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
 
-<P><STRONG><a name="[205]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
+<P><STRONG><a name="[210]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
 
-<P><STRONG><a name="[206]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
+<P><STRONG><a name="[211]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
 
-<P><STRONG><a name="[207]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
+<P><STRONG><a name="[212]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
 
-<P><STRONG><a name="[208]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
+<P><STRONG><a name="[213]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
 
 <P><STRONG><a name="[6b]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
 </UL>
 
-<P><STRONG><a name="[209]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
+<P><STRONG><a name="[214]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
 
-<P><STRONG><a name="[20a]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
+<P><STRONG><a name="[215]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
 
-<P><STRONG><a name="[20b]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
+<P><STRONG><a name="[216]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
 
-<P><STRONG><a name="[20c]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
+<P><STRONG><a name="[217]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
 
-<P><STRONG><a name="[20d]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
+<P><STRONG><a name="[218]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
 
-<P><STRONG><a name="[20e]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
+<P><STRONG><a name="[219]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
 
-<P><STRONG><a name="[20f]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
+<P><STRONG><a name="[21a]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
 <P><STRONG><a name="[54]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 </UL>
 
-<P><STRONG><a name="[210]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
+<P><STRONG><a name="[21b]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
 
 <P><STRONG><a name="[63]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -264,17 +264,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
 </UL>
 
-<P><STRONG><a name="[211]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
+<P><STRONG><a name="[21c]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[67]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1072 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; replay_task &rArr; lora_wait_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 1048 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; tx_task &rArr; tx_handle_rx_and_check_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 </UL>
 
-<P><STRONG><a name="[212]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
+<P><STRONG><a name="[21d]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
 
 <P><STRONG><a name="[8b]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -284,7 +284,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
 </UL>
 
-<P><STRONG><a name="[213]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
+<P><STRONG><a name="[21e]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
 
 <P><STRONG><a name="[6c]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
@@ -434,35 +434,35 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
+<BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
-<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
+<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_handle_rx_and_check_ack
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
+<LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_show
-<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iso_from_tm_local
-<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
+<LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iso_from_tm_local
+<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
 </UL>
 
 <P><STRONG><a name="[72]"></a>_printf_pre_padding</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, _printf_pad.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = _printf_pre_padding
 </UL>
-<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_infnan
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
+<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_common
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_str
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_infnan
 </UL>
 
 <P><STRONG><a name="[73]"></a>_printf_post_padding</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, _printf_pad.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = _printf_post_padding
 </UL>
-<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_infnan
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
+<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_common
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_str
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_infnan
 </UL>
 
 <P><STRONG><a name="[71]"></a>_printf_str</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, _printf_str.o(.text))
@@ -491,7 +491,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_x
 </UL>
 
-<P><STRONG><a name="[214]"></a>_printf_longlong_hex</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, _printf_hex_int.o(.text), UNUSED)
+<P><STRONG><a name="[21f]"></a>_printf_longlong_hex</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, _printf_hex_int.o(.text), UNUSED)
 
 <P><STRONG><a name="[75]"></a>__printf</STRONG> (Thumb, 388 bytes, Stack size 40 bytes, __printf_flags_ss_wp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40 + Unknown Stack Size
@@ -503,46 +503,47 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
 
-<P><STRONG><a name="[1a9]"></a>strchr</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, strchr.o(.text))
+<P><STRONG><a name="[1ac]"></a>strchr</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, strchr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;json_extract_int
 </UL>
 
 <P><STRONG><a name="[18f]"></a>strstr</STRONG> (Thumb, 36 bytes, Stack size 12 bytes, strstr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = strstr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
+<BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
+<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_handle_rx_and_check_ack
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;json_extract_int
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
 </UL>
 
-<P><STRONG><a name="[1b8]"></a>strcpy</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, strcpy.o(.text))
+<P><STRONG><a name="[1bb]"></a>strcpy</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, strcpy.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = strcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_show
 </UL>
 
-<P><STRONG><a name="[194]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
+<P><STRONG><a name="[197]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
-<LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pad20
-<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;center20
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pad20
+<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;center20
 </UL>
 
-<P><STRONG><a name="[1b2]"></a>strncmp</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, strncmp.o(.text))
+<P><STRONG><a name="[1b5]"></a>strncmp</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, strncmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = strncmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
+<BR>[Called By]<UL><LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
 </UL>
 
-<P><STRONG><a name="[195]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
-<LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pad20
-<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_write_regs
-<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;center20
+<P><STRONG><a name="[198]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
+<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_push
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pad20
+<LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_write_regs
+<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;center20
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_meta
 </UL>
 
@@ -550,36 +551,39 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 
-<P><STRONG><a name="[215]"></a>_memcpy_lastbytes</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_v6.o(.text), UNUSED)
+<P><STRONG><a name="[220]"></a>_memcpy_lastbytes</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_v6.o(.text), UNUSED)
 
 <P><STRONG><a name="[79]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLoRa
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setAutoLDO
+<BR>[Called By]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLoRa
+<LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_pop
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_memcpy
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setAutoLDO
 </UL>
 
-<P><STRONG><a name="[216]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
+<P><STRONG><a name="[221]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[217]"></a>__rt_memcpy_w</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
+<P><STRONG><a name="[222]"></a>__rt_memcpy_w</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[218]"></a>_memcpy_lastbytes_aligned</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_w.o(.text), UNUSED)
+<P><STRONG><a name="[223]"></a>_memcpy_lastbytes_aligned</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_w.o(.text), UNUSED)
 
 <P><STRONG><a name="[a7]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = __aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_push
+<LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_pop
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_get_tm
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DS3231_SetOnce_Safe
 </UL>
 
-<P><STRONG><a name="[219]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
+<P><STRONG><a name="[224]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[21a]"></a>__rt_memclr_w</STRONG> (Thumb, 78 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
+<P><STRONG><a name="[225]"></a>__rt_memclr_w</STRONG> (Thumb, 78 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
 
 <P><STRONG><a name="[88]"></a>_memset_w</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr_w.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_memclr
@@ -590,14 +594,14 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
+<BR>[Called By]<UL><LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
 </UL>
 
-<P><STRONG><a name="[21b]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[226]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[21c]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[227]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[21d]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[228]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[74]"></a>_printf_int_common</STRONG> (Thumb, 178 bytes, Stack size 32 bytes, _printf_intcommon.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = _printf_int_common &rArr; _printf_post_padding
@@ -609,17 +613,17 @@ Global Symbols
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_dec
 </UL>
 
-<P><STRONG><a name="[21e]"></a>__lib_sel_fp_printf</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, _printf_fp_dec.o(.text), UNUSED)
+<P><STRONG><a name="[229]"></a>__lib_sel_fp_printf</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, _printf_fp_dec.o(.text), UNUSED)
 
 <P><STRONG><a name="[82]"></a>_printf_fp_dec_real</STRONG> (Thumb, 620 bytes, Stack size 104 bytes, _printf_fp_dec.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 324<LI>Call Chain = _printf_fp_dec_real &rArr; _fp_digits &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
-<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_infnan
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_locale
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_infnan
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_locale
 </UL>
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec
 </UL>
@@ -669,11 +673,11 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset_w
 </UL>
 
-<P><STRONG><a name="[21f]"></a>_memset</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr.o(.text), UNUSED)
+<P><STRONG><a name="[22a]"></a>_memset</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr.o(.text), UNUSED)
 
 <P><STRONG><a name="[60]"></a>__rt_locale</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, rt_locale_intlibspace.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_lc_common
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
+<BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_lc_common
 </UL>
 
 <P><STRONG><a name="[81]"></a>_ll_udiv10</STRONG> (Thumb, 138 bytes, Stack size 12 bytes, lludiv10.o(.text))
@@ -700,13 +704,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 
-<P><STRONG><a name="[220]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[22b]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[89]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[221]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[22c]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[64]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -727,7 +731,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[1d6]"></a>strcmp</STRONG> (Thumb, 128 bytes, Stack size 0 bytes, strcmpv7m.o(.text))
+<P><STRONG><a name="[1e1]"></a>strcmp</STRONG> (Thumb, 128 bytes, Stack size 0 bytes, strcmpv7m.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_get_lc_numeric
 </UL>
 
@@ -735,11 +739,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
-<P><STRONG><a name="[222]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[22d]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[223]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[22e]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[224]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[22f]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[7e]"></a>_btod_d2e</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, btod.o(CL$$btod_d2e))
 <BR><BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_d2e_norm_op1
@@ -776,8 +780,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_e2e
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__btod_div_common
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
 </UL>
 
 <P><STRONG><a name="[80]"></a>_btod_emul</STRONG> (Thumb, 42 bytes, Stack size 28 bytes, btod.o(CL$$btod_emul))
@@ -786,8 +790,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__btod_mult_common
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_e2e
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
 </UL>
 
 <P><STRONG><a name="[90]"></a>__btod_mult_common</STRONG> (Thumb, 580 bytes, Stack size 16 bytes, btod.o(CL$$btod_mult_common))
@@ -801,8 +805,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Stop
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Stop
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
 </UL>
 
 <P><STRONG><a name="[93]"></a>ADC_Enable</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, stm32f1xx_hal_adc.o(i.ADC_Enable))
@@ -828,12 +832,12 @@ Global Symbols
 <P><STRONG><a name="[9b]"></a>DHT_GetData</STRONG> (Thumb, 146 bytes, Stack size 32 bytes, dht.o(i.DHT_GetData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = DHT_GetData &rArr; DHT_Start &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_Start
+<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_Start
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_ReadByte
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_Check_Response
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
+<BR>[Called By]<UL><LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
 </UL>
 
 <P><STRONG><a name="[20]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.DebugMon_Handler))
@@ -910,8 +914,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_init
-<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_clear
+<BR>[Called By]<UL><LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_init
+<LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_clear
 <LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_Reset
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_ReleasePowerDown
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_transmit
@@ -919,18 +923,14 @@ Global Symbols
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setSyncWord
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setPower_dBm
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_init
-<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_cooldown_wait
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
+<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
+<LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_WaitWhileBusy
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setSpreadingFactor
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setPower
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setOCP
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setLowDaraRateOptimization
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setFrequency
-<LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_WaitWhileBusy
 </UL>
 
 <P><STRONG><a name="[116]"></a>HAL_GPIO_DeInit</STRONG> (Thumb, 284 bytes, Stack size 24 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_DeInit))
@@ -942,15 +942,16 @@ Global Symbols
 <P><STRONG><a name="[a1]"></a>HAL_GPIO_Init</STRONG> (Thumb, 766 bytes, Stack size 36 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = HAL_GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_MspInit
-<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<BR>[Called By]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_MspInit
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_MspInit
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_MspInit
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_Start
 </UL>
 
 <P><STRONG><a name="[a0]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
-<BR><BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait_level
+<BR><BR>[Called By]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buttons_task
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait_level
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_ReadByte
 </UL>
 
@@ -960,20 +961,21 @@ Global Symbols
 <LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_ReadID
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_task
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
+<LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_task
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
 <LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_update
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buttons_task
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_BurstWrite
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_Start
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_WriteEnable
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_ReadStatus1
 <LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;page_program
 <LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_Read
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_EraseSector
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_BurstWrite
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_Start
 </UL>
 
 <P><STRONG><a name="[92]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_GetTick))
@@ -984,11 +986,11 @@ Global Symbols
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Master_Receive
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_PollForConversion
-<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_cooldown_wait
 <LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
-<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_task
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_WaitForSynchro
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_ExitInitMode
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_EnterInitMode
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnTXEFlagUntilTimeout
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnRXNEFlagUntilTimeout
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnMasterAddressFlagUntilTimeout
@@ -996,16 +998,21 @@ Global Symbols
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnBTFFlagUntilTimeout
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Enable
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ConversionStop_Disable
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_WaitForSynchro
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_ExitInitMode
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_EnterInitMode
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Transmit
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Receive
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout
 </UL>
 
-<P><STRONG><a name="[1c3]"></a>HAL_GetUIDw0</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_GetUIDw0))
+<P><STRONG><a name="[1c5]"></a>HAL_GetUIDw0</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_GetUIDw0))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[1c6]"></a>HAL_GetUIDw1</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_GetUIDw1))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[1c7]"></a>HAL_GetUIDw2</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_GetUIDw2))
 <BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1027,7 +1034,7 @@ Global Symbols
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnFlagUntilTimeout
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_MasterRequestRead
 </UL>
-<BR>[Called By]<UL><LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_read_regs
+<BR>[Called By]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_read_regs
 </UL>
 
 <P><STRONG><a name="[bc]"></a>HAL_I2C_Master_Transmit</STRONG> (Thumb, 360 bytes, Stack size 32 bytes, stm32f1xx_hal_i2c.o(i.HAL_I2C_Master_Transmit))
@@ -1039,9 +1046,9 @@ Global Symbols
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnBTFFlagUntilTimeout
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_MasterRequestWrite
 </UL>
-<BR>[Called By]<UL><LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_write_regs
-<LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_read_regs
-<LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_write4
+<BR>[Called By]<UL><LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_write_regs
+<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_read_regs
+<LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_write4
 </UL>
 
 <P><STRONG><a name="[b6]"></a>HAL_I2C_MspInit</STRONG> (Thumb, 190 bytes, Stack size 32 bytes, i2c.o(i.HAL_I2C_MspInit))
@@ -1183,13 +1190,13 @@ Global Symbols
 <P><STRONG><a name="[dc]"></a>HAL_PCD_IRQHandler</STRONG> (Thumb, 460 bytes, Stack size 32 bytes, stm32f1xx_hal_pcd.o(i.HAL_PCD_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 276<LI>Call Chain = HAL_PCD_IRQHandler &rArr; PCD_EP_ISR_Handler &rArr; HAL_PCD_EP_DB_Transmit &rArr; HAL_PCD_DataInStageCallback &rArr; USBD_LL_DataInStage &rArr; USBD_CtlContinueSendData &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePMA
 </UL>
-<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SetAddress
+<BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SetAddress
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SuspendCallback
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SOFCallback
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_ResumeCallback
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_ResetCallback
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_ReadInterrupts
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_LP_CAN1_RX0_IRQHandler
 </UL>
@@ -1303,8 +1310,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
@@ -1365,7 +1372,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetTime
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_ByteToBcd2
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
+<BR>[Called By]<UL><LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
 </UL>
 
 <P><STRONG><a name="[101]"></a>HAL_RTC_GetTime</STRONG> (Thumb, 260 bytes, Stack size 32 bytes, stm32f1xx_hal_rtc.o(i.HAL_RTC_GetTime))
@@ -1379,7 +1386,7 @@ Global Symbols
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_ByteToBcd2
 </UL>
 <BR>[Called By]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetDate
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
 </UL>
 
 <P><STRONG><a name="[108]"></a>HAL_RTC_Init</STRONG> (Thumb, 188 bytes, Stack size 16 bytes, stm32f1xx_hal_rtc.o(i.HAL_RTC_Init))
@@ -1478,12 +1485,12 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_EndRxTransaction
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_EndRxTransaction
 </UL>
 <BR>[Called By]<UL><LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_ReleasePowerDown
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
 <LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_Read
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
 </UL>
 
 <P><STRONG><a name="[11a]"></a>HAL_SPI_Transmit</STRONG> (Thumb, 446 bytes, Stack size 32 bytes, stm32f1xx_hal_spi.o(i.HAL_SPI_Transmit))
@@ -1494,13 +1501,13 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_Reset
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_ReleasePowerDown
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_BurstWrite
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_WriteEnable
 <LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;page_program
 <LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_Read
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_EraseSector
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_writeReg
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_readReg
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_BurstWrite
 </UL>
 
 <P><STRONG><a name="[118]"></a>HAL_SPI_TransmitReceive</STRONG> (Thumb, 584 bytes, Stack size 48 bytes, stm32f1xx_hal_spi.o(i.HAL_SPI_TransmitReceive))
@@ -1561,7 +1568,7 @@ Global Symbols
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_read
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_isvalid
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
+<BR>[Called By]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
 </UL>
 
 <P><STRONG><a name="[124]"></a>LoRa_isvalid</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, lora.o(i.LoRa_isvalid))
@@ -1601,18 +1608,18 @@ Global Symbols
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_read
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
+<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_handle_rx_and_check_ack
 </UL>
 
 <P><STRONG><a name="[12a]"></a>LoRa_setAutoLDO</STRONG> (Thumb, 106 bytes, Stack size 136 bytes, lora.o(i.LoRa_setAutoLDO))
 <BR><BR>[Stack]<UL><LI>Max Depth = 352<LI>Call Chain = LoRa_setAutoLDO &rArr; LoRa_setLowDaraRateOptimization &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setLowDaraRateOptimization
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setLowDaraRateOptimization
 </UL>
 <BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_init
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setSpreadingFactor
@@ -1664,7 +1671,7 @@ Global Symbols
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setOCP
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
+<BR>[Called By]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
 </UL>
 
 <P><STRONG><a name="[129]"></a>LoRa_setSpreadingFactor</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, lora.o(i.LoRa_setSpreadingFactor))
@@ -1684,7 +1691,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
+<BR>[Called By]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
 </UL>
 
 <P><STRONG><a name="[128]"></a>LoRa_setTOMsb_setCRCon</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, lora.o(i.LoRa_setTOMsb_setCRCon))
@@ -1695,7 +1702,7 @@ Global Symbols
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_init
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
+<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
 </UL>
 
 <P><STRONG><a name="[134]"></a>LoRa_startReceiving</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, lora.o(i.LoRa_startReceiving))
@@ -1705,10 +1712,8 @@ Global Symbols
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_read
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
+<BR>[Called By]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_start_current
+<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
 </UL>
 
 <P><STRONG><a name="[135]"></a>LoRa_transmit</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, lora.o(i.LoRa_transmit))
@@ -1720,9 +1725,7 @@ Global Symbols
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_gotoMode
 <LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_BurstWrite
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
+<BR>[Called By]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_start_current
 </UL>
 
 <P><STRONG><a name="[122]"></a>LoRa_write</STRONG> (Thumb, 34 bytes, Stack size 32 bytes, lora.o(i.LoRa_write))
@@ -1764,15 +1767,15 @@ Global Symbols
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;area_read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Push
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_finish_success
 </UL>
 
 <P><STRONG><a name="[138]"></a>Log_Empty</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, flashlog.o(i.Log_Empty))
 <BR><BR>[Called By]<UL><LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Push
 <LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Peek
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Drop
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
-<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
 </UL>
 
 <P><STRONG><a name="[13c]"></a>Log_Init</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, flashlog.o(i.Log_Init))
@@ -1791,8 +1794,8 @@ Global Symbols
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;area_wrap
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;area_read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
-<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
 </UL>
 
 <P><STRONG><a name="[141]"></a>Log_Push</STRONG> (Thumb, 172 bytes, Stack size 40 bytes, flashlog.o(i.Log_Push))
@@ -1808,25 +1811,25 @@ Global Symbols
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;area_write
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;area_wrap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
+<BR>[Called By]<UL><LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_finish_fail
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
 </UL>
 
 <P><STRONG><a name="[146]"></a>MX_ADC1_Init</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, adc.o(i.MX_ADC1_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = MX_ADC1_Init &rArr; HAL_ADC_Init &rArr; HAL_ADC_MspInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
-<LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConfigChannel
+<BR>[Calls]<UL><LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConfigChannel
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[148]"></a>MX_GPIO_Init</STRONG> (Thumb, 326 bytes, Stack size 24 bytes, gpio.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[148]"></a>MX_GPIO_Init</STRONG> (Thumb, 430 bytes, Stack size 24 bytes, gpio.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = MX_GPIO_Init &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -2400,9 +2403,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_WritePMA
 </UL>
-<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Transmit
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Transmit
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Receive
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCD_EP_ISR_Handler
 </UL>
 
 <P><STRONG><a name="[f5]"></a>USB_EnableGlobalInt</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f1xx_ll_usb.o(i.USB_EnableGlobalInt))
@@ -2438,8 +2441,8 @@ Global Symbols
 <P><STRONG><a name="[d3]"></a>USB_WritePMA</STRONG> (Thumb, 64 bytes, Stack size 28 bytes, stm32f1xx_ll_usb.o(i.USB_WritePMA))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = USB_WritePMA
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_DB_Transmit
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_EPStartXfer
+<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_EPStartXfer
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_DB_Transmit
 </UL>
 
 <P><STRONG><a name="[1e]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.UsageFault_Handler))
@@ -2561,64 +2564,64 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Push
 </UL>
 
-<P><STRONG><a name="[1ac]"></a>lcd_clear</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_clear))
+<P><STRONG><a name="[1af]"></a>lcd_clear</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_clear))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = lcd_clear &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_cmd
+<LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
+<BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
 </UL>
 
-<P><STRONG><a name="[1ab]"></a>lcd_init</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_init))
+<P><STRONG><a name="[1ae]"></a>lcd_init</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = lcd_init &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_cmd
-<LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_write4
+<LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_cmd
+<LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_write4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
+<BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
 </UL>
 
-<P><STRONG><a name="[1ad]"></a>lcd_put_cur</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, i2c-lcd.o(i.lcd_put_cur))
+<P><STRONG><a name="[1b0]"></a>lcd_put_cur</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, i2c-lcd.o(i.lcd_put_cur))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_cmd
+<BR>[Calls]<UL><LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
+<BR>[Called By]<UL><LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
+<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
 </UL>
 
-<P><STRONG><a name="[1af]"></a>lcd_send_cmd</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_send_cmd))
+<P><STRONG><a name="[1b2]"></a>lcd_send_cmd</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_send_cmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_u8
+<BR>[Calls]<UL><LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_u8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_cur
-<LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_init
-<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_clear
+<BR>[Called By]<UL><LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_cur
+<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_init
+<LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_clear
 </UL>
 
-<P><STRONG><a name="[1b4]"></a>lcd_send_data</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_send_data))
+<P><STRONG><a name="[1b7]"></a>lcd_send_data</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_send_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = lcd_send_data &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_u8
+<BR>[Calls]<UL><LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_u8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_string
+<BR>[Called By]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_string
 </UL>
 
-<P><STRONG><a name="[1ae]"></a>lcd_send_string</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_send_string))
+<P><STRONG><a name="[1b1]"></a>lcd_send_string</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, i2c-lcd.o(i.lcd_send_string))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = lcd_send_string &rArr; lcd_send_data &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_data
+<BR>[Calls]<UL><LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_data
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
+<BR>[Called By]<UL><LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
+<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
 </UL>
 
-<P><STRONG><a name="[68]"></a>main</STRONG> (Thumb, 426 bytes, Stack size 128 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1072 + Unknown Stack Size
-<LI>Call Chain = main &rArr; replay_task &rArr; lora_wait_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<P><STRONG><a name="[68]"></a>main</STRONG> (Thumb, 498 bytes, Stack size 128 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1048 + Unknown Stack Size
+<LI>Call Chain = main &rArr; tx_task &rArr; tx_handle_rx_and_check_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_Reset
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_ReleasePowerDown
@@ -2634,74 +2637,78 @@ Global Symbols
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_ADC1_Init
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Init
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetUIDw0
+<LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetUIDw2
+<LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetUIDw1
+<LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetUIDw0
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
-<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
-<LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_task
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
+<LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
+<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
+<LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_task
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;snapshot_prev
-<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;snapshot_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
+<LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;snapshot_meas
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rng_next
 <LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
-<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
+<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
+<LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
 <LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_update
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_show
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
-<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_task
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
-<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
+<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_boot
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_kick_task
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_get_tm
-<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;changed_enough
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;changed_enough
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buttons_task
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DS3231_SetOnce_Safe
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[1be]"></a>newLoRa</STRONG> (Thumb, 62 bytes, Stack size 56 bytes, lora.o(i.newLoRa))
+<P><STRONG><a name="[1c1]"></a>newLoRa</STRONG> (Thumb, 62 bytes, Stack size 56 bytes, lora.o(i.newLoRa))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = newLoRa &rArr; __aeabi_memcpy4
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
+<BR>[Called By]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
 </UL>
 
-<P><STRONG><a name="[1d3]"></a>uplink_crc16_ccitt</STRONG> (Thumb, 38 bytes, Stack size 24 bytes, uplink_patch.o(i.uplink_crc16_ccitt))
+<P><STRONG><a name="[1de]"></a>uplink_crc16_ccitt</STRONG> (Thumb, 38 bytes, Stack size 24 bytes, uplink_patch.o(i.uplink_crc16_ccitt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = uplink_crc16_ccitt
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc16_acc_byte
+<BR>[Calls]<UL><LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc16_acc_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
+<BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
 </UL>
 
-<P><STRONG><a name="[1ca]"></a>uplink_set_hist_and_fix_crc</STRONG> (Thumb, 194 bytes, Stack size 424 bytes, uplink_patch.o(i.uplink_set_hist_and_fix_crc))
+<P><STRONG><a name="[1dc]"></a>uplink_set_hist_and_fix_crc</STRONG> (Thumb, 194 bytes, Stack size 424 bytes, uplink_patch.o(i.uplink_set_hist_and_fix_crc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 568 + Unknown Stack Size
 <LI>Call Chain = uplink_set_hist_and_fix_crc &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strstr
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
-<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_crc16_ccitt
-<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_strnlen
+<LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_crc16_ccitt
+<LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_strnlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
 </UL>
 
 <P><STRONG><a name="[62]"></a>_get_lc_numeric</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, lc_numeric_c.o(locale$$code))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _get_lc_numeric
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
+<BR>[Calls]<UL><LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_lc_numeric_2
 </UL>
 
-<P><STRONG><a name="[1dc]"></a>__fpl_dcmp_Inf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, dcmpi.o(x$fpl$dcmpinf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
+<P><STRONG><a name="[1e7]"></a>__fpl_dcmp_Inf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, dcmpi.o(x$fpl$dcmpinf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
 </UL>
 
 <P><STRONG><a name="[12e]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv))
@@ -2710,9 +2717,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setAutoLDO
 </UL>
 
-<P><STRONG><a name="[1d7]"></a>_ddiv</STRONG> (Thumb, 552 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
-<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<P><STRONG><a name="[1e2]"></a>_ddiv</STRONG> (Thumb, 552 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
+<LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
 <P><STRONG><a name="[12f]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
@@ -2721,36 +2728,36 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setAutoLDO
 </UL>
 
-<P><STRONG><a name="[1da]"></a>_dfix</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<P><STRONG><a name="[1e5]"></a>_dfix</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
 <P><STRONG><a name="[12d]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
 <BR><BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setAutoLDO
 </UL>
 
-<P><STRONG><a name="[225]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
+<P><STRONG><a name="[230]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
 
-<P><STRONG><a name="[226]"></a>__aeabi_cdcmple</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf), UNUSED)
+<P><STRONG><a name="[231]"></a>__aeabi_cdcmple</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf), UNUSED)
 
-<P><STRONG><a name="[1db]"></a>_dcmple</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmp_Inf
-<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<P><STRONG><a name="[1e6]"></a>_dcmple</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmp_Inf
 </UL>
 
-<P><STRONG><a name="[1de]"></a>__fpl_dcmple_InfNaN</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, dleqf.o(x$fpl$dleqf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_drcmple
+<P><STRONG><a name="[1e9]"></a>__fpl_dcmple_InfNaN</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, dleqf.o(x$fpl$dleqf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_drcmple
 </UL>
 
-<P><STRONG><a name="[1d9]"></a>__fpl_dnaninf</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, dnaninf.o(x$fpl$dnaninf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
-<LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dfix
-<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ddiv
+<P><STRONG><a name="[1e4]"></a>__fpl_dnaninf</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, dnaninf.o(x$fpl$dnaninf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
+<LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dfix
+<LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ddiv
 </UL>
 
-<P><STRONG><a name="[1d8]"></a>__fpl_dretinf</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dretinf.o(x$fpl$dretinf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_f2d
-<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ddiv
+<P><STRONG><a name="[1e3]"></a>__fpl_dretinf</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dretinf.o(x$fpl$dretinf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_f2d
+<LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ddiv
 </UL>
 
 <P><STRONG><a name="[130]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf))
@@ -2759,144 +2766,144 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setAutoLDO
 </UL>
 
-<P><STRONG><a name="[1dd]"></a>_drcmple</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmple_InfNaN
+<P><STRONG><a name="[1e8]"></a>_drcmple</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmple_InfNaN
 </UL>
 
-<P><STRONG><a name="[1b5]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
+<P><STRONG><a name="[1b8]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_f2d
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
+<BR>[Called By]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_show
 </UL>
 
-<P><STRONG><a name="[1df]"></a>_f2d</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
+<P><STRONG><a name="[1ea]"></a>_f2d</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<LI><a href="#[1e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
 </UL>
 
-<P><STRONG><a name="[227]"></a>__aeabi_fadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
+<P><STRONG><a name="[232]"></a>__aeabi_fadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
 
-<P><STRONG><a name="[1e1]"></a>_fadd</STRONG> (Thumb, 196 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
-<LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
-<LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub1
+<P><STRONG><a name="[1ec]"></a>_fadd</STRONG> (Thumb, 196 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
+<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub1
 </UL>
 
-<P><STRONG><a name="[1e6]"></a>__fpl_fcmp_Inf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, fcmpi.o(x$fpl$fcmpinf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
-<LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpeq
+<P><STRONG><a name="[1f1]"></a>__fpl_fcmp_Inf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, fcmpi.o(x$fpl$fcmpinf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
+<LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpeq
 </UL>
 
-<P><STRONG><a name="[1c9]"></a>__aeabi_fdiv</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fdiv.o(x$fpl$fdiv))
+<P><STRONG><a name="[1cd]"></a>__aeabi_fdiv</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fdiv.o(x$fpl$fdiv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fdiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
-<LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
+<BR>[Called By]<UL><LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
+<LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
 </UL>
 
-<P><STRONG><a name="[1e4]"></a>_fdiv</STRONG> (Thumb, 384 bytes, Stack size 16 bytes, fdiv.o(x$fpl$fdiv), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
-<LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<P><STRONG><a name="[1ef]"></a>_fdiv</STRONG> (Thumb, 384 bytes, Stack size 16 bytes, fdiv.o(x$fpl$fdiv), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
+<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
 </UL>
 
-<P><STRONG><a name="[1c7]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, feqf.o(x$fpl$feqf))
+<P><STRONG><a name="[1cb]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, feqf.o(x$fpl$feqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_cfcmpeq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
-<LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
+<BR>[Called By]<UL><LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
+<LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
 </UL>
 
-<P><STRONG><a name="[1e5]"></a>_fcmpeq</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, feqf.o(x$fpl$feqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
-<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmp_Inf
+<P><STRONG><a name="[1f0]"></a>_fcmpeq</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, feqf.o(x$fpl$feqf), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmp_Inf
 </UL>
 
 <P><STRONG><a name="[9e]"></a>__aeabi_ui2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu))
 <BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_GetData
-<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
-<LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
+<LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
 </UL>
 
-<P><STRONG><a name="[228]"></a>_ffltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu), UNUSED)
+<P><STRONG><a name="[233]"></a>_ffltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu), UNUSED)
 
-<P><STRONG><a name="[1a3]"></a>__aeabi_cfcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fleqf.o(x$fpl$fleqf))
+<P><STRONG><a name="[1a5]"></a>__aeabi_cfcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fleqf.o(x$fpl$fleqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_cfcmple
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rh_allows_watering
-<LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<BR>[Called By]<UL><LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rh_allows_watering
+<LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
 </UL>
 
-<P><STRONG><a name="[1e7]"></a>_fcmple</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, fleqf.o(x$fpl$fleqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
-<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmp_Inf
+<P><STRONG><a name="[1f2]"></a>_fcmple</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, fleqf.o(x$fpl$fleqf), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmp_Inf
 </UL>
 
-<P><STRONG><a name="[1ea]"></a>__fpl_fcmple_InfNaN</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fleqf.o(x$fpl$fleqf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frcmple
+<P><STRONG><a name="[1f5]"></a>__fpl_fcmple_InfNaN</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fleqf.o(x$fpl$fleqf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frcmple
 </UL>
 
-<P><STRONG><a name="[1c8]"></a>__aeabi_fmul</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul))
+<P><STRONG><a name="[1cc]"></a>__aeabi_fmul</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
-<LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
+<BR>[Called By]<UL><LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
+<LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
 </UL>
 
-<P><STRONG><a name="[1e8]"></a>_fmul</STRONG> (Thumb, 258 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
-<LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<P><STRONG><a name="[1f3]"></a>_fmul</STRONG> (Thumb, 258 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
+<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
 </UL>
 
-<P><STRONG><a name="[1e0]"></a>__fpl_fnaninf</STRONG> (Thumb, 140 bytes, Stack size 8 bytes, fnaninf.o(x$fpl$fnaninf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fmul
-<LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
-<LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpeq
-<LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
-<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
-<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
-<LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_f2d
+<P><STRONG><a name="[1eb]"></a>__fpl_fnaninf</STRONG> (Thumb, 140 bytes, Stack size 8 bytes, fnaninf.o(x$fpl$fnaninf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fmul
+<LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
+<LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpeq
+<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
+<LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_f2d
 </UL>
 
-<P><STRONG><a name="[1e3]"></a>__fpl_fretinf</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fretinf.o(x$fpl$fretinf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fmul
-<LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
-<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
+<P><STRONG><a name="[1ee]"></a>__fpl_fretinf</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fretinf.o(x$fpl$fretinf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fmul
+<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
 </UL>
 
-<P><STRONG><a name="[199]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, frleqf.o(x$fpl$frleqf))
-<BR><BR>[Called By]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
-<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
-<LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
-<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;changed_enough
+<P><STRONG><a name="[19c]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, frleqf.o(x$fpl$frleqf))
+<BR><BR>[Called By]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
+<LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;changed_enough
 </UL>
 
-<P><STRONG><a name="[1e9]"></a>_frcmple</STRONG> (Thumb, 98 bytes, Stack size 0 bytes, frleqf.o(x$fpl$frleqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmple_InfNaN
+<P><STRONG><a name="[1f4]"></a>_frcmple</STRONG> (Thumb, 98 bytes, Stack size 0 bytes, frleqf.o(x$fpl$frleqf), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmple_InfNaN
 </UL>
 
-<P><STRONG><a name="[1d2]"></a>__aeabi_frsub</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, faddsub_clz.o(x$fpl$frsb))
-<BR><BR>[Called By]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
+<P><STRONG><a name="[1d5]"></a>__aeabi_frsub</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, faddsub_clz.o(x$fpl$frsb))
+<BR><BR>[Called By]<UL><LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
 </UL>
 
-<P><STRONG><a name="[1eb]"></a>_frsb</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, faddsub_clz.o(x$fpl$frsb), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub1
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd1
+<P><STRONG><a name="[1f6]"></a>_frsb</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, faddsub_clz.o(x$fpl$frsb), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub1
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd1
 </UL>
 
-<P><STRONG><a name="[198]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub))
+<P><STRONG><a name="[19b]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
-<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;changed_enough
+<BR>[Called By]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;changed_enough
 </UL>
 
-<P><STRONG><a name="[1ed]"></a>_fsub</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd1
+<P><STRONG><a name="[1f8]"></a>_fsub</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd1
 </UL>
 
 <P><STRONG><a name="[57]"></a>_printf_fp_dec</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, printf1.o(x$fpl$printf1))
@@ -2910,8 +2917,8 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[a3]"></a>DS3231_SetOnce_Safe</STRONG> (Thumb, 194 bytes, Stack size 120 bytes, main.o(i.DS3231_SetOnce_Safe))
-<BR><BR>[Stack]<UL><LI>Max Depth = 292 + Unknown Stack Size
+<P><STRONG><a name="[a3]"></a>DS3231_SetOnce_Safe</STRONG> (Thumb, 192 bytes, Stack size 120 bytes, main.o(i.DS3231_SetOnce_Safe))
+<BR><BR>[Stack]<UL><LI>Max Depth = 300 + Unknown Stack Size
 <LI>Call Chain = DS3231_SetOnce_Safe &rArr; cdc_send_line &rArr; CDC_Transmit_FS &rArr; USBD_CDC_TransmitPacket &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePMA
 </UL>
 <BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTCEx_BKUPWrite
@@ -2926,13 +2933,13 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[197]"></a>__ARM_isnanf</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, main.o(i.__ARM_isnanf))
-<BR><BR>[Called By]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rh_allows_watering
+<P><STRONG><a name="[19a]"></a>__ARM_isnanf</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, main.o(i.__ARM_isnanf))
+<BR><BR>[Called By]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rh_allows_watering
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_show
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
-<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;changed_enough
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;changed_enough
 </UL>
 
 <P><STRONG><a name="[189]"></a>adc_read_avg</STRONG> (Thumb, 38 bytes, Stack size 24 bytes, main.o(i.adc_read_avg))
@@ -2940,8 +2947,8 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adc_read_single
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
-<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
+<BR>[Called By]<UL><LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
+<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
 </UL>
 
 <P><STRONG><a name="[18a]"></a>adc_read_single</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, main.o(i.adc_read_single))
@@ -2969,23 +2976,36 @@ Local Symbols
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
 <LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strstr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
+<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_handle_rx_and_check_ack
 </UL>
 
-<P><STRONG><a name="[19c]"></a>bcd2bin</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, main.o(i.bcd2bin))
+<P><STRONG><a name="[19f]"></a>bcd2bin</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, main.o(i.bcd2bin))
 <BR><BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_get_tm
 </UL>
 
-<P><STRONG><a name="[19d]"></a>bin2bcd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, main.o(i.bin2bcd))
+<P><STRONG><a name="[1a0]"></a>bin2bcd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, main.o(i.bin2bcd))
 <BR><BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_set_tm
 </UL>
 
-<P><STRONG><a name="[1bb]"></a>bw_to_str</STRONG> (Thumb, 64 bytes, Stack size 0 bytes, main.o(i.bw_to_str))
-<BR><BR>[Called By]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
+<P><STRONG><a name="[193]"></a>buttons_task</STRONG> (Thumb, 192 bytes, Stack size 8 bytes, main.o(i.buttons_task))
+<BR><BR>[Stack]<UL><LI>Max Depth = 664 + Unknown Stack Size
+<LI>Call Chain = buttons_task &rArr; send_event_request &rArr; Log_Push &rArr; Log_Drop &rArr; write_meta &rArr; W25Q_Write &rArr; page_program &rArr; W25Q_WaitWhileBusy &rArr; W25Q_ReadStatus1 &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
+<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;debounce_step
+</UL>
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ab]"></a>cdc_send_line</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, main.o(i.cdc_send_line))
-<BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
+<P><STRONG><a name="[1be]"></a>bw_to_str</STRONG> (Thumb, 64 bytes, Stack size 0 bytes, main.o(i.bw_to_str))
+<BR><BR>[Called By]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
+</UL>
+
+<P><STRONG><a name="[ab]"></a>cdc_send_line</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, main.o(i.cdc_send_line))
+<BR><BR>[Stack]<UL><LI>Max Depth = 180 + Unknown Stack Size
 <LI>Call Chain = cdc_send_line &rArr; CDC_Transmit_FS &rArr; USBD_CDC_TransmitPacket &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePMA
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
@@ -2994,69 +3014,78 @@ Local Symbols
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
-<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
-<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_start_current
+<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_handle_rx_and_check_ack
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_init_params
+<LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
+<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DS3231_SetOnce_Safe
 </UL>
 
-<P><STRONG><a name="[193]"></a>center20</STRONG> (Thumb, 74 bytes, Stack size 24 bytes, main.o(i.center20))
+<P><STRONG><a name="[196]"></a>center20</STRONG> (Thumb, 74 bytes, Stack size 24 bytes, main.o(i.center20))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = center20 &rArr; strlen
 </UL>
-<BR>[Calls]<UL><LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_show
 </UL>
 
-<P><STRONG><a name="[196]"></a>changed_enough</STRONG> (Thumb, 210 bytes, Stack size 16 bytes, main.o(i.changed_enough))
+<P><STRONG><a name="[199]"></a>changed_enough</STRONG> (Thumb, 210 bytes, Stack size 16 bytes, main.o(i.changed_enough))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = changed_enough &rArr; __aeabi_fsub
 </UL>
-<BR>[Calls]<UL><LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<BR>[Calls]<UL><LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
+<LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1cf]"></a>civil_from_days</STRONG> (Thumb, 232 bytes, Stack size 32 bytes, main.o(i.civil_from_days))
+<P><STRONG><a name="[1d1]"></a>civil_from_days</STRONG> (Thumb, 232 bytes, Stack size 32 bytes, main.o(i.civil_from_days))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = civil_from_days
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
+<BR>[Called By]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
 </UL>
 
-<P><STRONG><a name="[1ba]"></a>cr_to_str</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, main.o(i.cr_to_str))
-<BR><BR>[Called By]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
+<P><STRONG><a name="[1bd]"></a>cr_to_str</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, main.o(i.cr_to_str))
+<BR><BR>[Called By]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
 </UL>
 
-<P><STRONG><a name="[1d0]"></a>crc16_ccitt</STRONG> (Thumb, 66 bytes, Stack size 12 bytes, main.o(i.crc16_ccitt))
+<P><STRONG><a name="[1d2]"></a>crc16_ccitt</STRONG> (Thumb, 66 bytes, Stack size 12 bytes, main.o(i.crc16_ccitt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = crc16_ccitt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
+<BR>[Called By]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
 </UL>
 
-<P><STRONG><a name="[1ce]"></a>days_from_civil</STRONG> (Thumb, 124 bytes, Stack size 20 bytes, main.o(i.days_from_civil))
+<P><STRONG><a name="[1d0]"></a>days_from_civil</STRONG> (Thumb, 124 bytes, Stack size 20 bytes, main.o(i.days_from_civil))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = days_from_civil
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tm_to_epoch_utc
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
+<BR>[Called By]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tm_to_epoch_utc
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
 </UL>
 
-<P><STRONG><a name="[1b6]"></a>dot_to_comma</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, main.o(i.dot_to_comma))
+<P><STRONG><a name="[194]"></a>debounce_step</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, main.o(i.debounce_step))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = debounce_step &rArr; now_ms
+</UL>
+<BR>[Calls]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
+</UL>
+<BR>[Called By]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buttons_task
+</UL>
+
+<P><STRONG><a name="[1b9]"></a>dot_to_comma</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, main.o(i.dot_to_comma))
 <BR><BR>[Called By]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_show
 </UL>
 
 <P><STRONG><a name="[a9]"></a>ds3231_clear_osf</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, main.o(i.ds3231_clear_osf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = ds3231_clear_osf &rArr; ds3231_read_status &rArr; ds3231_read_regs &rArr; HAL_I2C_Master_Receive &rArr; I2C_MasterRequestRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_write_regs
+<BR>[Calls]<UL><LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_write_regs
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_read_status
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DS3231_SetOnce_Safe
@@ -3065,18 +3094,18 @@ Local Symbols
 <P><STRONG><a name="[a5]"></a>ds3231_get_tm</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, main.o(i.ds3231_get_tm))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = ds3231_get_tm &rArr; ds3231_read_regs &rArr; HAL_I2C_Master_Receive &rArr; I2C_MasterRequestRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_read_regs
-<LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bcd2bin
+<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_read_regs
+<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bcd2bin
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DS3231_SetOnce_Safe
 </UL>
 
-<P><STRONG><a name="[19b]"></a>ds3231_read_regs</STRONG> (Thumb, 60 bytes, Stack size 32 bytes, main.o(i.ds3231_read_regs))
+<P><STRONG><a name="[19e]"></a>ds3231_read_regs</STRONG> (Thumb, 60 bytes, Stack size 32 bytes, main.o(i.ds3231_read_regs))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = ds3231_read_regs &rArr; HAL_I2C_Master_Receive &rArr; I2C_MasterRequestRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Master_Transmit
@@ -3089,7 +3118,7 @@ Local Symbols
 <P><STRONG><a name="[a6]"></a>ds3231_read_status</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.ds3231_read_status))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = ds3231_read_status &rArr; ds3231_read_regs &rArr; HAL_I2C_Master_Receive &rArr; I2C_MasterRequestRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_read_regs
+<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_read_regs
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_clear_osf
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DS3231_SetOnce_Safe
@@ -3098,102 +3127,102 @@ Local Symbols
 <P><STRONG><a name="[a8]"></a>ds3231_set_tm</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, main.o(i.ds3231_set_tm))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = ds3231_set_tm &rArr; ds3231_write_regs &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_write_regs
-<LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bin2bcd
+<BR>[Calls]<UL><LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_write_regs
+<LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bin2bcd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DS3231_SetOnce_Safe
 </UL>
 
-<P><STRONG><a name="[19a]"></a>ds3231_write_regs</STRONG> (Thumb, 58 bytes, Stack size 40 bytes, main.o(i.ds3231_write_regs))
+<P><STRONG><a name="[19d]"></a>ds3231_write_regs</STRONG> (Thumb, 58 bytes, Stack size 40 bytes, main.o(i.ds3231_write_regs))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = ds3231_write_regs &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Master_Transmit
-<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_set_tm
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_clear_osf
 </UL>
 
-<P><STRONG><a name="[19e]"></a>flash_debug_head_once</STRONG> (Thumb, 102 bytes, Stack size 384 bytes, main.o(i.flash_debug_head_once))
+<P><STRONG><a name="[1a1]"></a>flash_debug_head_once</STRONG> (Thumb, 102 bytes, Stack size 384 bytes, main.o(i.flash_debug_head_once))
 <BR><BR>[Stack]<UL><LI>Max Depth = 616 + Unknown Stack Size
 <LI>Call Chain = flash_debug_head_once &rArr; Log_Peek &rArr; area_read &rArr; W25Q_Read &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Peek
 <LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Empty
-<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_type_str
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_type_str
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1a1]"></a>fsm_step</STRONG> (Thumb, 410 bytes, Stack size 8 bytes, main.o(i.fsm_step))
-<BR><BR>[Stack]<UL><LI>Max Depth = 832 + Unknown Stack Size
-<LI>Call Chain = fsm_step &rArr; send_event &rArr; lora_wait_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<P><STRONG><a name="[1a4]"></a>fsm_step</STRONG> (Thumb, 410 bytes, Stack size 8 bytes, main.o(i.fsm_step))
+<BR><BR>[Stack]<UL><LI>Max Depth = 664 + Unknown Stack Size
+<LI>Call Chain = fsm_step &rArr; send_event_request &rArr; Log_Push &rArr; Log_Drop &rArr; write_meta &rArr; W25Q_Write &rArr; page_program &rArr; W25Q_WaitWhileBusy &rArr; W25Q_ReadStatus1 &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rh_allows_watering
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rh_allows_watering
 <LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
-<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
+<LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1a5]"></a>heartbeat_task</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, main.o(i.heartbeat_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 872 + Unknown Stack Size
-<LI>Call Chain = heartbeat_task &rArr; send_meas &rArr; lora_wait_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<P><STRONG><a name="[1a7]"></a>heartbeat_kick_task</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, main.o(i.heartbeat_kick_task))
+<BR><BR>[Stack]<UL><LI>Max Depth = 680 + Unknown Stack Size
+<LI>Call Chain = heartbeat_kick_task &rArr; send_meas_request &rArr; rtc_epoch_utc &rArr; ds3231_get_tm &rArr; ds3231_read_regs &rArr; HAL_I2C_Master_Receive &rArr; I2C_MasterRequestRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;snapshot_meas
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
+<BR>[Calls]<UL><LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;snapshot_meas
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rng_next
 <LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1a8]"></a>iso_from_tm_local</STRONG> (Thumb, 50 bytes, Stack size 40 bytes, main.o(i.iso_from_tm_local))
+<P><STRONG><a name="[1ab]"></a>iso_from_tm_local</STRONG> (Thumb, 50 bytes, Stack size 40 bytes, main.o(i.iso_from_tm_local))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
 <LI>Call Chain = iso_from_tm_local &rArr; __2snprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
+<BR>[Called By]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
 </UL>
 
 <P><STRONG><a name="[18d]"></a>json_extract_int</STRONG> (Thumb, 150 bytes, Stack size 32 bytes, main.o(i.json_extract_int))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = json_extract_int &rArr; strstr
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strstr
-<LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strchr
+<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strchr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_handle_rx_and_check_ack
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
 </UL>
 
-<P><STRONG><a name="[1aa]"></a>lcd_boot</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(i.lcd_boot))
+<P><STRONG><a name="[1ad]"></a>lcd_boot</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(i.lcd_boot))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = lcd_boot &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_string
-<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_cur
-<LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_init
-<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_clear
+<BR>[Calls]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_string
+<LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_cur
+<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_init
+<LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_clear
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1b1]"></a>lcd_put_line_if_changed</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, main.o(i.lcd_put_line_if_changed))
+<P><STRONG><a name="[1b4]"></a>lcd_put_line_if_changed</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, main.o(i.lcd_put_line_if_changed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_string
-<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_cur
+<BR>[Calls]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_string
+<LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_cur
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncpy
-<LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncmp
+<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncmp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_show
 </UL>
@@ -3202,20 +3231,20 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 296 + Unknown Stack Size
 <LI>Call Chain = lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pad20
-<LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
-<LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dot_to_comma
-<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;center20
-<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
-<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<BR>[Calls]<UL><LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pad20
+<LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_put_line_if_changed
+<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dot_to_comma
+<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;center20
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
+<LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
 </UL>
 
-<P><STRONG><a name="[192]"></a>leds_update</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, main.o(i.leds_update))
+<P><STRONG><a name="[192]"></a>leds_update</STRONG> (Thumb, 176 bytes, Stack size 8 bytes, main.o(i.leds_update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = leds_update &rArr; now_ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -3225,28 +3254,29 @@ Local Symbols
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
 </UL>
 
-<P><STRONG><a name="[1b9]"></a>log_rf_config</STRONG> (Thumb, 82 bytes, Stack size 168 bytes, main.o(i.log_rf_config))
-<BR><BR>[Stack]<UL><LI>Max Depth = 340 + Unknown Stack Size
+<P><STRONG><a name="[1bc]"></a>log_rf_config</STRONG> (Thumb, 82 bytes, Stack size 168 bytes, main.o(i.log_rf_config))
+<BR><BR>[Stack]<UL><LI>Max Depth = 348 + Unknown Stack Size
 <LI>Call Chain = log_rf_config &rArr; cdc_send_line &rArr; CDC_Transmit_FS &rArr; USBD_CDC_TransmitPacket &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePMA
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sf_to_str
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cr_to_str
+<BR>[Calls]<UL><LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sf_to_str
+<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cr_to_str
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
-<LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bw_to_str
+<LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bw_to_str
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[19f]"></a>log_type_str</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(i.log_type_str))
-<BR><BR>[Called By]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
+<P><STRONG><a name="[1a2]"></a>log_type_str</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(i.log_type_str))
+<BR><BR>[Called By]<UL><LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_debug_head_once
 </UL>
 
-<P><STRONG><a name="[1bd]"></a>lora_init_params</STRONG> (Thumb, 172 bytes, Stack size 56 bytes, main.o(i.lora_init_params))
+<P><STRONG><a name="[1c0]"></a>lora_init_params</STRONG> (Thumb, 178 bytes, Stack size 56 bytes, main.o(i.lora_init_params))
 <BR><BR>[Stack]<UL><LI>Max Depth = 456 + Unknown Stack Size
 <LI>Call Chain = lora_init_params &rArr; LoRa_init &rArr; LoRa_setSpreadingFactor &rArr; LoRa_setAutoLDO &rArr; LoRa_setLowDaraRateOptimization &rArr; LoRa_read &rArr; LoRa_readReg &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLoRa
+<BR>[Calls]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLoRa
+<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_startReceiving
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setTOMsb_setCRCon
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setSyncWord
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_setPower_dBm
@@ -3258,165 +3288,127 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1bf]"></a>lora_wait_ack</STRONG> (Thumb, 182 bytes, Stack size 328 bytes, main.o(i.lora_wait_ack))
-<BR><BR>[Stack]<UL><LI>Max Depth = 648 + Unknown Stack Size
-<LI>Call Chain = lora_wait_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
-</UL>
-<BR>[Calls]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_startReceiving
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_receive
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;json_extract_int
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
-<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
-<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strstr
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
-</UL>
-
 <P><STRONG><a name="[18e]"></a>now_ms</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, main.o(i.now_ms))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = now_ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
-<LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_task
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
+<LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_task
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_start_current
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_finish_success
+<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_finish_fail
 <LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_update
-<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_task
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_kick_task
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;debounce_step
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buttons_task
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
 </UL>
 
-<P><STRONG><a name="[1b7]"></a>pad20</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, main.o(i.pad20))
+<P><STRONG><a name="[1ba]"></a>pad20</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, main.o(i.pad20))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = pad20 &rArr; strlen
 </UL>
-<BR>[Calls]<UL><LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_show
 </UL>
 
-<P><STRONG><a name="[1c6]"></a>rain_adc_to_wetpct</STRONG> (Thumb, 96 bytes, Stack size 32 bytes, main.o(i.rain_adc_to_wetpct))
+<P><STRONG><a name="[1ca]"></a>rain_adc_to_wetpct</STRONG> (Thumb, 96 bytes, Stack size 32 bytes, main.o(i.rain_adc_to_wetpct))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = rain_adc_to_wetpct &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<BR>[Calls]<UL><LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
-<LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
-</UL>
-
-<P><STRONG><a name="[1c4]"></a>replay_task</STRONG> (Thumb, 178 bytes, Stack size 296 bytes, main.o(i.replay_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 944 + Unknown Stack Size
-<LI>Call Chain = replay_task &rArr; lora_wait_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
-</UL>
-<BR>[Calls]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
-<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Peek
-<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Empty
-<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Drop
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_transmit
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_startReceiving
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
-<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_cooldown_wait
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
-<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;json_extract_int
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
-</UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_rain_adc_debounce
 </UL>
 
-<P><STRONG><a name="[1a4]"></a>rh_allows_watering</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(i.rh_allows_watering))
+<P><STRONG><a name="[1a6]"></a>rh_allows_watering</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(i.rh_allows_watering))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = rh_allows_watering &rArr; __aeabi_cfcmple
 </UL>
-<BR>[Calls]<UL><LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<BR>[Calls]<UL><LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<BR>[Called By]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
 </UL>
 
-<P><STRONG><a name="[1cc]"></a>rtc_epoch_utc</STRONG> (Thumb, 122 bytes, Stack size 80 bytes, main.o(i.rtc_epoch_utc))
+<P><STRONG><a name="[1aa]"></a>rng_next</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, main.o(i.rng_next))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_finish_fail
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_kick_task
+</UL>
+
+<P><STRONG><a name="[1ce]"></a>rtc_epoch_utc</STRONG> (Thumb, 140 bytes, Stack size 80 bytes, main.o(i.rtc_epoch_utc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = rtc_epoch_utc &rArr; ds3231_get_tm &rArr; ds3231_read_regs &rArr; HAL_I2C_Master_Receive &rArr; I2C_MasterRequestRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetTime
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetDate
-<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tm_to_epoch_utc
+<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tm_to_epoch_utc
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_get_tm
-<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;days_from_civil
+<LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;days_from_civil
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
+<BR>[Called By]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
 </UL>
 
-<P><STRONG><a name="[1a2]"></a>send_event</STRONG> (Thumb, 382 bytes, Stack size 176 bytes, main.o(i.send_event))
-<BR><BR>[Stack]<UL><LI>Max Depth = 824 + Unknown Stack Size
-<LI>Call Chain = send_event &rArr; lora_wait_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<P><STRONG><a name="[195]"></a>send_event_request</STRONG> (Thumb, 332 bytes, Stack size 400 bytes, main.o(i.send_event_request))
+<BR><BR>[Stack]<UL><LI>Max Depth = 656 + Unknown Stack Size
+<LI>Call Chain = send_event_request &rArr; Log_Push &rArr; Log_Drop &rArr; write_meta &rArr; W25Q_Write &rArr; page_program &rArr; W25Q_WaitWhileBusy &rArr; W25Q_ReadStatus1 &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Push
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_transmit
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_startReceiving
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
-<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_cooldown_wait
-<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tm_to_epoch_utc
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
-<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iso_from_tm_local
+<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_push
+<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tm_to_epoch_utc
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
+<LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iso_from_tm_local
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_get_tm
-<LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc16_ccitt
-<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;civil_from_days
+<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc16_ccitt
+<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;civil_from_days
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_step
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buttons_task
 </UL>
 
-<P><STRONG><a name="[1a6]"></a>send_meas</STRONG> (Thumb, 568 bytes, Stack size 216 bytes, main.o(i.send_meas))
-<BR><BR>[Stack]<UL><LI>Max Depth = 864 + Unknown Stack Size
-<LI>Call Chain = send_meas &rArr; lora_wait_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<P><STRONG><a name="[1a8]"></a>send_meas_request</STRONG> (Thumb, 494 bytes, Stack size 448 bytes, main.o(i.send_meas_request))
+<BR><BR>[Stack]<UL><LI>Max Depth = 672 + Unknown Stack Size
+<LI>Call Chain = send_meas_request &rArr; rtc_epoch_utc &rArr; ds3231_get_tm &rArr; ds3231_read_regs &rArr; HAL_I2C_Master_Receive &rArr; I2C_MasterRequestRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Push
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_transmit
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_startReceiving
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
-<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_cooldown_wait
-<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tm_to_epoch_utc
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_wait_ack
-<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iso_from_tm_local
+<BR>[Calls]<UL><LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_push
+<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tm_to_epoch_utc
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
+<LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iso_from_tm_local
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ds3231_get_tm
-<LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc16_ccitt
-<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;civil_from_days
+<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc16_ccitt
+<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;civil_from_days
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
-<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
-<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
+<LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_task
+<BR>[Called By]<UL><LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_kick_task
 </UL>
 
-<P><STRONG><a name="[1bc]"></a>sf_to_str</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, main.o(i.sf_to_str))
-<BR><BR>[Called By]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
+<P><STRONG><a name="[1bf]"></a>sf_to_str</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, main.o(i.sf_to_str))
+<BR><BR>[Called By]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log_rf_config
 </UL>
 
-<P><STRONG><a name="[1a7]"></a>snapshot_meas</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, main.o(i.snapshot_meas))
+<P><STRONG><a name="[1a9]"></a>snapshot_meas</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, main.o(i.snapshot_meas))
 <BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_task
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;heartbeat_kick_task
 </UL>
 
 <P><STRONG><a name="[190]"></a>snapshot_prev</STRONG> (Thumb, 58 bytes, Stack size 0 bytes, main.o(i.snapshot_prev))
@@ -3424,53 +3416,110 @@ Local Symbols
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
 </UL>
 
-<P><STRONG><a name="[1d1]"></a>soil_adc_to_percent</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, main.o(i.soil_adc_to_percent))
+<P><STRONG><a name="[1d4]"></a>soil_adc_to_percent</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, main.o(i.soil_adc_to_percent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = soil_adc_to_percent &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<BR>[Calls]<UL><LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
+<BR>[Called By]<UL><LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_soil_and_dht
 </UL>
 
-<P><STRONG><a name="[1cd]"></a>tm_to_epoch_utc</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, main.o(i.tm_to_epoch_utc))
+<P><STRONG><a name="[1cf]"></a>tm_to_epoch_utc</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, main.o(i.tm_to_epoch_utc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = tm_to_epoch_utc &rArr; days_from_civil
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;days_from_civil
+<BR>[Calls]<UL><LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;days_from_civil
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
-</UL>
-
-<P><STRONG><a name="[1cb]"></a>tx_cooldown_wait</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, main.o(i.tx_cooldown_wait))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = tx_cooldown_wait &rArr; HAL_Delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
+<BR>[Called By]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_epoch_utc
 </UL>
 
-<P><STRONG><a name="[1c2]"></a>txled_start</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, main.o(i.txled_start))
+<P><STRONG><a name="[1d6]"></a>tx_finish_fail</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, main.o(i.tx_finish_fail))
+<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = tx_finish_fail &rArr; Log_Push &rArr; Log_Drop &rArr; write_meta &rArr; W25Q_Write &rArr; page_program &rArr; W25Q_WaitWhileBusy &rArr; W25Q_ReadStatus1 &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Push
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rng_next
+<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_start_current
+</UL>
+
+<P><STRONG><a name="[1d7]"></a>tx_finish_success</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, main.o(i.tx_finish_success))
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = tx_finish_success &rArr; Log_Drop &rArr; write_meta &rArr; W25Q_Write &rArr; page_program &rArr; W25Q_WaitWhileBusy &rArr; W25Q_ReadStatus1 &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Drop
+<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+</UL>
+
+<P><STRONG><a name="[1d8]"></a>tx_handle_rx_and_check_ack</STRONG> (Thumb, 158 bytes, Stack size 320 bytes, main.o(i.tx_handle_rx_and_check_ack))
+<BR><BR>[Stack]<UL><LI>Max Depth = 640 + Unknown Stack Size
+<LI>Call Chain = tx_handle_rx_and_check_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_receive
+<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;json_extract_int
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
+<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_cmd_from_ack
+<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strstr
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+</UL>
+
+<P><STRONG><a name="[1d9]"></a>tx_start_current</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, main.o(i.tx_start_current))
+<BR><BR>[Stack]<UL><LI>Max Depth = 280 + Unknown Stack Size
+<LI>Call Chain = tx_start_current &rArr; tx_finish_fail &rArr; Log_Push &rArr; Log_Drop &rArr; write_meta &rArr; W25Q_Write &rArr; page_program &rArr; W25Q_WaitWhileBusy &rArr; W25Q_ReadStatus1 &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_transmit
+<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LoRa_startReceiving
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txled_start
+<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_finish_fail
+<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+</UL>
+
+<P><STRONG><a name="[1c8]"></a>tx_task</STRONG> (Thumb, 270 bytes, Stack size 280 bytes, main.o(i.tx_task))
+<BR><BR>[Stack]<UL><LI>Max Depth = 920 + Unknown Stack Size
+<LI>Call Chain = tx_task &rArr; tx_handle_rx_and_check_ack &rArr; apply_cmd_from_ack &rArr; lcd_show &rArr; lcd_put_line_if_changed &rArr; lcd_put_cur &rArr; lcd_send_cmd &rArr; lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Peek
+<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Empty
+<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_push
+<LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_pop
+<LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_is_empty
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_start_current
+<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_handle_rx_and_check_ack
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_finish_success
+<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_finish_fail
+<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
+<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;json_extract_int
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cdc_send_line
+<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+</UL>
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[1c4]"></a>txled_start</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, main.o(i.txled_start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = txled_start &rArr; now_ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;replay_task
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_start_current
 </UL>
 
-<P><STRONG><a name="[1c5]"></a>txled_task</STRONG> (Thumb, 120 bytes, Stack size 8 bytes, main.o(i.txled_task))
+<P><STRONG><a name="[1c9]"></a>txled_task</STRONG> (Thumb, 120 bytes, Stack size 8 bytes, main.o(i.txled_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = txled_task &rArr; now_ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -3479,25 +3528,55 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1c0]"></a>update_rain_adc_debounce</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, main.o(i.update_rain_adc_debounce))
+<P><STRONG><a name="[1da]"></a>txq_is_empty</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, main.o(i.txq_is_empty))
+<BR><BR>[Called By]<UL><LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_pop
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+</UL>
+
+<P><STRONG><a name="[1dd]"></a>txq_is_full</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(i.txq_is_full))
+<BR><BR>[Called By]<UL><LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_push
+</UL>
+
+<P><STRONG><a name="[1db]"></a>txq_pop</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, main.o(i.txq_pop))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = txq_pop &rArr; __aeabi_memcpy4
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_is_empty
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+</UL>
+
+<P><STRONG><a name="[1d3]"></a>txq_push</STRONG> (Thumb, 138 bytes, Stack size 32 bytes, main.o(i.txq_push))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = txq_push &rArr; __aeabi_memclr4
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;txq_is_full
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tx_task
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_meas_request
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_event_request
+</UL>
+
+<P><STRONG><a name="[1c2]"></a>update_rain_adc_debounce</STRONG> (Thumb, 130 bytes, Stack size 16 bytes, main.o(i.update_rain_adc_debounce))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = update_rain_adc_debounce &rArr; adc_read_avg &rArr; adc_read_single &rArr; HAL_ADC_PollForConversion &rArr; HAL_RCCEx_GetPeriphCLKFreq &rArr; HAL_RCC_GetPCLK2Freq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
-<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;now_ms
+<BR>[Calls]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rain_adc_to_wetpct
 <LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adc_read_avg
-<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_isnanf
+<LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1c1]"></a>update_soil_and_dht</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, main.o(i.update_soil_and_dht))
+<P><STRONG><a name="[1c3]"></a>update_soil_and_dht</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, main.o(i.update_soil_and_dht))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = update_soil_and_dht &rArr; adc_read_avg &rArr; adc_read_single &rArr; HAL_ADC_PollForConversion &rArr; HAL_RCCEx_GetPeriphCLKFreq &rArr; HAL_RCC_GetPCLK2Freq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_GetData
-<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soil_adc_to_percent
 <LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adc_read_avg
-<LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
+<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -3569,13 +3648,13 @@ Local Symbols
 <P><STRONG><a name="[de]"></a>PCD_EP_ISR_Handler</STRONG> (Thumb, 1260 bytes, Stack size 40 bytes, stm32f1xx_hal_pcd.o(i.PCD_EP_ISR_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 244<LI>Call Chain = PCD_EP_ISR_Handler &rArr; HAL_PCD_EP_DB_Transmit &rArr; HAL_PCD_DataInStageCallback &rArr; USBD_LL_DataInStage &rArr; USBD_CtlContinueSendData &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePMA
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_DB_Transmit
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_DB_Receive
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SetupStageCallback
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_SetupStageCallback
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_DataOutStageCallback
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_DataInStageCallback
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_ReadPMA
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_EPStartXfer
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_DB_Transmit
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_DB_Receive
 </UL>
 <BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_IRQHandler
 </UL>
@@ -3922,8 +4001,8 @@ Local Symbols
 <P><STRONG><a name="[9c]"></a>DHT_Start</STRONG> (Thumb, 130 bytes, Stack size 32 bytes, dht.o(i.DHT_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = DHT_Start &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_GetData
@@ -3948,22 +4027,22 @@ Local Symbols
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT_Check_Response
 </UL>
 
-<P><STRONG><a name="[1b3]"></a>lcd_send_u8</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, i2c-lcd.o(i.lcd_send_u8))
+<P><STRONG><a name="[1b6]"></a>lcd_send_u8</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, i2c-lcd.o(i.lcd_send_u8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = lcd_send_u8 &rArr; lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_write4
+<BR>[Calls]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_write4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_data
-<LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_cmd
+<BR>[Called By]<UL><LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_data
+<LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_cmd
 </UL>
 
-<P><STRONG><a name="[1b0]"></a>lcd_write4</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, i2c-lcd.o(i.lcd_write4))
+<P><STRONG><a name="[1b3]"></a>lcd_write4</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, i2c-lcd.o(i.lcd_write4))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = lcd_write4 &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Master_Transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_init
-<LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_u8
+<BR>[Called By]<UL><LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_init
+<LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_send_u8
 </UL>
 
 <P><STRONG><a name="[139]"></a>area_read</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, flashlog.o(i.area_read))
@@ -4009,7 +4088,7 @@ Local Symbols
 <P><STRONG><a name="[142]"></a>free_bytes</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, flashlog.o(i.free_bytes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = free_bytes
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;used_bytes
+<BR>[Calls]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;used_bytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Push
 </UL>
@@ -4022,13 +4101,13 @@ Local Symbols
 <P><STRONG><a name="[13d]"></a>read_meta</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, flashlog.o(i.read_meta))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = read_meta &rArr; W25Q_Read &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_Read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Init
 </UL>
 
-<P><STRONG><a name="[1a0]"></a>used_bytes</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, flashlog.o(i.used_bytes))
+<P><STRONG><a name="[1a3]"></a>used_bytes</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, flashlog.o(i.used_bytes))
 <BR><BR>[Called By]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free_bytes
 </UL>
 
@@ -4043,12 +4122,12 @@ Local Symbols
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;format_area
 </UL>
 
-<P><STRONG><a name="[1d4]"></a>crc16_acc_byte</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, uplink_patch.o(i.crc16_acc_byte))
-<BR><BR>[Called By]<UL><LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_crc16_ccitt
+<P><STRONG><a name="[1df]"></a>crc16_acc_byte</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, uplink_patch.o(i.crc16_acc_byte))
+<BR><BR>[Called By]<UL><LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_crc16_ccitt
 </UL>
 
-<P><STRONG><a name="[1d5]"></a>my_strnlen</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, uplink_patch.o(i.my_strnlen))
-<BR><BR>[Called By]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
+<P><STRONG><a name="[1e0]"></a>my_strnlen</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, uplink_patch.o(i.my_strnlen))
+<BR><BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uplink_set_hist_and_fix_crc
 </UL>
 
 <P><STRONG><a name="[188]"></a>page_program</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, w25qxx.o(i.page_program))
@@ -4062,14 +4141,14 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W25Q_Write
 </UL>
 
-<P><STRONG><a name="[1ec]"></a>_fadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
-<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frsb
+<P><STRONG><a name="[1f7]"></a>_fadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
+<LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frsb
 </UL>
 
-<P><STRONG><a name="[1e2]"></a>_fsub1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frsb
-<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
+<P><STRONG><a name="[1ed]"></a>_fsub1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frsb
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
 </UL>
 
 <P><STRONG><a name="[7c]"></a>_fp_digits</STRONG> (Thumb, 432 bytes, Stack size 96 bytes, _printf_fp_dec.o(.text))

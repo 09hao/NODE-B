@@ -65,6 +65,14 @@ void Error_Handler(void);
 #define RST_GPIO_Port GPIOB
 #define CS_Pin GPIO_PIN_12
 #define CS_GPIO_Port GPIOB
+#define COM_NO_MODE_Pin GPIO_PIN_8
+#define COM_NO_MODE_GPIO_Port GPIOA
+#define LED_MODE_Pin GPIO_PIN_9
+#define LED_MODE_GPIO_Port GPIOA
+#define LED_PUMP_Pin GPIO_PIN_15
+#define LED_PUMP_GPIO_Port GPIOA
+#define COM_NO_PUMP_Pin GPIO_PIN_3
+#define COM_NO_PUMP_GPIO_Port GPIOB
 #define LED_DO_Pin GPIO_PIN_9
 #define LED_DO_GPIO_Port GPIOB
 

@@ -19,6 +19,7 @@
   ******************************************************************************
   */
 /* USER CODE END Header */
+
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
@@ -58,6 +59,10 @@ typedef enum { ST_IDLE=0, ST_WATERING, ST_COOLDOWN, ST_RAIN_LOCK } state_t;
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+/* ================== NODE IDENT ================== */
+#define NODE_ID_STR   "B"   /* Node B */
+
 /*** ACK & RTC options ***/
 #ifndef ACK_ENABLE
 #define ACK_ENABLE         1
@@ -65,40 +70,42 @@ typedef enum { ST_IDLE=0, ST_WATERING, ST_COOLDOWN, ST_RAIN_LOCK } state_t;
 #ifndef ACK_WINDOW_MS
 #define ACK_WINDOW_MS      1500
 #endif
+
+/* vao RX som hon sau TX (giam miss ACK) */
 #ifndef ACK_GUARD_MS
-#define ACK_GUARD_MS       40     // 20–30 ms: cho radio chuyển sang RX + jitter
+#define ACK_GUARD_MS       10
 #endif
+
+/* gap sau TX (giam chiem kenh qua lau) */
 #ifndef TX_POST_GAP_MS
-#define TX_POST_GAP_MS     1500   // khoảng trống sau mỗi uplink để GW TX ACK xong
+#define TX_POST_GAP_MS     600
 #endif
 
 /* Timestamp source */
 #define USE_DS3231_TS      1
 #define DS3231_I2C_ADDR7   0x68
-#define DS3231_HOLDS_LOCAL 1      /* 1 nếu DS3231 giữ giờ LOCAL */
+#define DS3231_HOLDS_LOCAL 1
 #ifndef USE_RTC_TS
 #define USE_RTC_TS         1
 #endif
+
+/* DS3231 giu gio VN local -> epoch_utc tru 7h */
 #ifndef TZ_OFFSET_SECS
-#define TZ_OFFSET_SECS     0      /* đặt (7*3600) nếu DS3231 là giờ VN */
+#define TZ_OFFSET_SECS     (7*3600)
 #endif
 
-/* Set HAL RTC mặc định (không bắt buộc) */
 #ifndef INIT_RTC_ONCE
 #define INIT_RTC_ONCE      0
 #endif
 
-/* ---------- CÁCH A: Set DS3231 MỘT LẦN BẰNG HẰNG SỐ ---------- */
-#define SET_DS3231_ONCE      1      /* 1=bật cơ chế set 1 lần */
-#define DS3231_INIT_Y        2025    /* Năm UTC */
-#define DS3231_INIT_M        10      /* Tháng 1..12 (không có 0 ở đầu) */
-#define DS3231_INIT_D        27      /* Ngày 1..31  */
-#define DS3231_INIT_H        13      /* Giờ 0..23    */
-#define DS3231_INIT_MIN      53      /* Phút         */
-#define DS3231_INIT_S        30      /* Giây         */
-/* -------------------------------------------------------------- */
-
-/* Magic đánh dấu đã chấp nhận thời gian DS3231 */
+/* ---- Set DS3231 once (safe) ---- */
+#define SET_DS3231_ONCE      1
+#define DS3231_INIT_Y        2025
+#define DS3231_INIT_M        11
+#define DS3231_INIT_D        10
+#define DS3231_INIT_H        00
+#define DS3231_INIT_MIN      59
+#define DS3231_INIT_S        00
 #define DS3231_BKP_MAGIC     0xD321
 
 /*** Thresholds & timings ***/
@@ -138,9 +145,9 @@ typedef enum { ST_IDLE=0, ST_WATERING, ST_COOLDOWN, ST_RAIN_LOCK } state_t;
 #define LEDW_Pin  GPIO_PIN_4
 #define LEDR_Port GPIOB
 #define LEDR_Pin  GPIO_PIN_9
-#define LEDW_ON() HAL_GPIO_WritePin(LEDW_Port, LEDW_Pin, GPIO_PIN_SET)
+#define LEDW_ON()  HAL_GPIO_WritePin(LEDW_Port, LEDW_Pin, GPIO_PIN_SET)
 #define LEDW_OFF() HAL_GPIO_WritePin(LEDW_Port, LEDW_Pin, GPIO_PIN_RESET)
-#define LEDR_ON() HAL_GPIO_WritePin(LEDR_Port, LEDR_Pin, GPIO_PIN_SET)
+#define LEDR_ON()  HAL_GPIO_WritePin(LEDR_Port, LEDR_Pin, GPIO_PIN_SET)
 #define LEDR_OFF() HAL_GPIO_WritePin(LEDR_Port, LEDR_Pin, GPIO_PIN_RESET)
 
 /*** TX LED (PC13 active-LOW) ***/
@@ -164,24 +171,52 @@ extern SPI_HandleTypeDef hspi2;
 /*** Heartbeat ***/
 #define HEARTBEAT_MS 4000u
 
-/*** Policy ***/
+/* jitter tranh trung nhip */
+#define HEARTBEAT_JITTER_MS  400u
+
+/* Policy */
 #define ONLY_TX_ON_CHANGE   0
 
 /* Debug periods */
 #define DEBUG_RAW_EVERY_MS  0
 #define FLASHDBG_HEAD_SUMMARY_EVERY_MS 0
+
+/* -------- Buttons (active-LOW) -------- */
+#define BTN_MODE_Port  GPIOA
+#define BTN_MODE_Pin   GPIO_PIN_8
+#define BTN_PUMP_Port  GPIOB
+#define BTN_PUMP_Pin   GPIO_PIN_3
+static inline uint8_t BTN_MODE_PRESSED(void){ return HAL_GPIO_ReadPin(BTN_MODE_Port, BTN_MODE_Pin) == GPIO_PIN_RESET; }
+static inline uint8_t BTN_PUMP_PRESSED(void){ return HAL_GPIO_ReadPin(BTN_PUMP_Port, BTN_PUMP_Pin) == GPIO_PIN_RESET; }
+
+/* -------- Status LEDs (active-LOW) -------- */
+#define LED_MODE_Port  GPIOA
+#define LED_MODE_Pin   GPIO_PIN_9
+#define LED_PUMP_Port  GPIOA
+#define LED_PUMP_Pin   GPIO_PIN_15
+#define LED_MODE_ON()   HAL_GPIO_WritePin(LED_MODE_Port, LED_MODE_Pin, GPIO_PIN_RESET)
+#define LED_MODE_OFF()  HAL_GPIO_WritePin(LED_MODE_Port, LED_MODE_Pin, GPIO_PIN_SET)
+#define LED_PUMP_ON()   HAL_GPIO_WritePin(LED_PUMP_Port, LED_PUMP_Pin, GPIO_PIN_RESET)
+#define LED_PUMP_OFF()  HAL_GPIO_WritePin(LED_PUMP_Port, LED_PUMP_Pin, GPIO_PIN_SET)
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 #define MIN_TO_MS(x) ((x) * 60UL * 1000UL)
 static inline uint32_t now_ms(void){ return HAL_GetTick(); }
+
+/* ============ LECH PHA NODE B (KHAC NODE A) ============ */
+/* offset 900..2900ms theo UID => Node B khong phat trung nhip voi Node A */
+static inline uint32_t hb_phase_offset_ms(void){
+  uint32_t uid = (uint32_t)HAL_GetUIDw0() ^ (uint32_t)HAL_GetUIDw1() ^ (uint32_t)HAL_GetUIDw2();
+  return 900u + (uid % 2000u);
+}
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-/* FSM & timers */
 static volatile state_t state = ST_IDLE;
 static state_t state_prev = ST_IDLE;
 
@@ -213,11 +248,10 @@ static int     snap_rain=-1, snap_pump=-1, snap_dht=-1;
 static uint32_t rng_state = 0x12345678;
 
 static char json_no_crc[208];
-static char json_final[240];
 
-/* timers */
 static volatile uint32_t t_rain_last = 0;
 static volatile uint32_t t_meas_last = 0;
+
 #if DEBUG_RAW_EVERY_MS > 0
 static uint32_t t_dbg_last  = 0;
 #endif
@@ -225,35 +259,58 @@ static uint32_t t_dbg_last  = 0;
 static uint32_t t_flash_head_dbg_last = 0;
 #endif
 
-/* RAW ADC debug */
 static volatile uint16_t dbg_soil_adc = 0;
 static volatile uint16_t dbg_rain_adc = 0;
 
-/* Flash */
 static uint32_t g_w25_id = 0;
-
-/* RF log helpers */
 static uint8_t g_sync_word = 0x34;
 
-/* I2C2 extern for DS3231 */
 extern I2C_HandleTypeDef hi2c2;
 
-/* Uplink timing state */
-static volatile uint32_t s_last_ul_ms = 0;   // mốc thời gian uplink gần nhất
+/* ===================== TX MANAGER (NON-BLOCKING) ===================== */
+#define TX_ITEM_MAX   240
+#define TXQ_SIZE      6
+
+typedef struct {
+  uint8_t  used;
+  uint8_t  from_flash;      // 1: replay tu flash
+  uint8_t  log_type;        // LOG_TYPE_DATA / LOG_TYPE_EVENT
+  uint32_t ts_meta;
+  uint32_t seq_expected;
+  uint16_t len;
+  char     buf[TX_ITEM_MAX];
+} tx_item_t;
+
+static tx_item_t txq[TXQ_SIZE];
+static uint8_t txq_head=0, txq_tail=0, txq_cnt=0;
+
+typedef enum { TXS_IDLE=0, TXS_WAIT_GUARD, TXS_WAIT_ACK, TXS_COOLDOWN } tx_state_t;
+static tx_state_t txs = TXS_IDLE;
+
+static tx_item_t cur_tx;
+static uint32_t  tx_guard_until = 0;
+static uint32_t  tx_ack_deadline = 0;
+static uint32_t  tx_cool_until = 0;
+
+/* Replay backoff neu fail */
+static uint32_t  replay_backoff_until = 0;
+
+/* Control mode */
+typedef enum { MODE_AUTO = 0, MODE_MANUAL = 1 } ctrl_mode_t;
+static volatile ctrl_mode_t g_mode = MODE_AUTO;
+static volatile uint32_t    t_last_cmd_ms = 0;
+#define MANUAL_TIMEOUT_MS   (60u * 1000u)
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-/* USER CODE BEGIN PFP */
-static void tx_cooldown_wait(void);
 
-/*** ACK + RTC helpers ***/
+/* USER CODE BEGIN PFP */
 static uint32_t rtc_epoch_utc(void);
 static int      json_extract_int(const char* json, const char* key, int defval);
-static uint8_t  lora_wait_ack(uint32_t expected_seq, uint16_t window_ms);
 static void     RTC_SetOnce_IfNeeded(void);
 
-/*** DS3231 helpers ***/
 static inline uint8_t bcd2bin(uint8_t x){ return (uint8_t)(x - 6*(x>>4)); }
 static inline uint8_t bin2bcd(uint8_t x){ return (uint8_t)(x + 6*(x/10)); }
 static HAL_StatusTypeDef ds3231_read_regs(uint8_t reg, uint8_t *dst, uint8_t len);
@@ -267,16 +324,12 @@ static void DS3231_SetOnce_Safe(void);
 static uint32_t days_from_civil(int y, unsigned m, unsigned d);
 static uint32_t tm_to_epoch_utc(const struct tm* t);
 
-/*** ISO-8601 helpers ***/
 static void civil_from_days(int z, int *y, unsigned *m, unsigned *d);
-static void iso8601_from_epoch_utc(uint32_t epoch, char *out, size_t n);
 static void iso_from_tm_local(const struct tm* t, char *out, size_t n);
 
-/*** utilities ***/
 static void cdc_send_line(const char* s);
 static uint16_t crc16_ccitt(const uint8_t *data, size_t len);
 
-/*** sensors & mapping ***/
 static uint16_t adc_read_single(uint32_t ch);
 static uint16_t adc_read_avg(uint32_t ch, int n);
 static float soil_adc_to_percent(uint16_t adc);
@@ -284,7 +337,6 @@ static float rain_adc_to_wetpct(uint16_t adc);
 static void  update_rain_adc_debounce(void);
 static void  update_soil_and_dht(void);
 
-/*** LCD helpers ***/
 static inline void pad20(char* dst, const char* src);
 static inline void center20(char* dst, const char* src);
 static inline void lcd_put_line_if_changed(uint8_t row, const char* s20);
@@ -294,49 +346,52 @@ static void lcd_boot(void);
 static void lcd_show(void);
 static void dot_to_comma(char* s);
 
-/*** LED TX ***/
 static void txled_start(uint8_t times, uint16_t on_ms, uint16_t off_ms);
 static void txled_task(void);
 
-/*** LoRa I/O & policy ***/
 static void lora_init_params(void);
-static void send_meas(bool forced);
-static void send_event(const char* ev);
+static void send_meas_request(bool forced);
+static void send_event_request(const char* ev);
 static inline void snapshot_meas(void);
 static inline int  changed_for_meas(void);
-static void heartbeat_task(void);
+static void heartbeat_kick_task(void);
 
-/*** FSM ***/
 static uint8_t rh_allows_watering(void);
 static void fsm_step(void);
 
-/*** RNG ***/
 static uint32_t rng_next(void);
-static int32_t jitter_pm10pct_ms(uint32_t base_ms);
 
-/*** debug & replay ***/
 static void diag_dump_raw(void);
-static void replay_task(void);
 
-/*** flash debug ***/
 static const char* log_type_str(uint8_t type);
 static void flash_debug_head_once(void);
 
-/*** RF config log ***/
 static const char* sf_to_str(uint8_t sf);
 static const char* bw_to_str(uint8_t bw);
 static const char* cr_to_str(uint8_t cr);
 static void        log_rf_config(void);
 
-// --- Control mode (AUTO/MANUAL) ---
-typedef enum { MODE_AUTO = 0, MODE_MANUAL = 1 } ctrl_mode_t;
-static volatile ctrl_mode_t g_mode = MODE_AUTO;     // mac dinh AUTO
-static volatile uint32_t    t_last_cmd_ms = 0;      // moc thoi gian nhan lenh cuoi
-#define MANUAL_TIMEOUT_MS   (60u * 1000u)           // 1 phut tu dong ve AUTO
+static void apply_cmd_from_ack(const char* json);
+
+static void buttons_task(void);
+static void leds_update(void);
+
+static uint8_t txq_push(const char* payload, uint16_t len, uint32_t seq_expected,
+                        uint32_t ts_meta, uint8_t log_type, uint8_t from_flash);
+static uint8_t txq_pop(tx_item_t* out);
+static uint8_t txq_is_full(void);
+static uint8_t txq_is_empty(void);
+
+static void tx_start_current(const tx_item_t* it);
+static void tx_finish_success(void);
+static void tx_finish_fail(void);
+static void tx_task(void);
+static uint8_t tx_handle_rx_and_check_ack(uint32_t expected_seq);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
 static void cdc_send_line(const char* s){
   if(!s) return;
   static char buf[256];
@@ -348,7 +403,11 @@ static void cdc_send_line(const char* s){
     if (CDC_Transmit_FS((uint8_t*)buf, (uint16_t)n) == USBD_OK) {
       USBD_CDC_HandleTypeDef *hcdc =
         (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;
-      if (hcdc) { while (hcdc->TxState) { } }
+
+      if (hcdc) {
+        uint32_t t1 = HAL_GetTick();
+        while (hcdc->TxState && (HAL_GetTick() - t1) < 20) { }
+      }
       break;
     }
     HAL_Delay(2);
@@ -385,36 +444,34 @@ static int ds3231_get_tm(struct tm *out){
   memset(out, 0, sizeof(*out));
   out->tm_sec  = bcd2bin(b[0] & 0x7F);
   out->tm_min  = bcd2bin(b[1] & 0x7F);
-  out->tm_hour = bcd2bin(b[2] & 0x3F);     // 24h
+  out->tm_hour = bcd2bin(b[2] & 0x3F);
   out->tm_mday = bcd2bin(b[4] & 0x3F);
-  out->tm_mon  = bcd2bin(b[5] & 0x1F) - 1; // 0..11
-  out->tm_year = bcd2bin(b[6]) + 100;      // 2000..2099
+  out->tm_mon  = bcd2bin(b[5] & 0x1F) - 1;
+  out->tm_year = bcd2bin(b[6]) + 100;
   return 1;
 }
 static int ds3231_set_tm(const struct tm *t){
   uint8_t b[7];
   b[0] = bin2bcd((uint8_t)t->tm_sec);
   b[1] = bin2bcd((uint8_t)t->tm_min);
-  b[2] = bin2bcd((uint8_t)t->tm_hour) & 0x3F; // 24h
-  b[3] = 1;                                   // DOW (không quan trọng)
+  b[2] = bin2bcd((uint8_t)t->tm_hour) & 0x3F;
+  b[3] = 1;
   b[4] = bin2bcd((uint8_t)t->tm_mday);
   b[5] = bin2bcd((uint8_t)(t->tm_mon + 1));
   b[6] = bin2bcd((uint8_t)((t->tm_year + 1900) - 2000));
   return (ds3231_write_regs(0x00, b, 7) == HAL_OK) ? 1 : 0;
 }
 
-/* Status: bit7 OSF (Oscillator Stop Flag) – 1 nghĩa là từng dừng */
 static int ds3231_read_status(uint8_t *st){
   return (ds3231_read_regs(0x0F, st, 1) == HAL_OK) ? 1 : 0;
 }
 static void ds3231_clear_osf(void){
   uint8_t st;
   if (!ds3231_read_status(&st)) return;
-  st &= ~(1u<<7); /* clear OSF */
+  st &= ~(1u<<7);
   (void)ds3231_write_regs(0x0F, &st, 1);
 }
 
-/* ---- SAFE-SET: chỉ set khi OSF=1 hoặc giờ “không hợp lý” ---- */
 static void DS3231_SetOnce_Safe(void){
 #if SET_DS3231_ONCE
   uint16_t bkp = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR2);
@@ -426,8 +483,8 @@ static void DS3231_SetOnce_Safe(void){
   int osf = (have_st && (st & 0x80)) ? 1 : 0;
 
   int need_set = 0;
-  if (!have || year < 2024) need_set = 1;       /* giờ không hợp lý */
-  if (osf)                    need_set = 1;     /* từng dừng dao động */
+  if (!have || year < 2024) need_set = 1;
+  if (osf) need_set = 1;
 
   if (need_set){
     struct tm t = {0};
@@ -451,10 +508,9 @@ static void DS3231_SetOnce_Safe(void){
     cdc_send_line("DS3231 keep existing.");
   }
 #else
-  (void)ds3231_clear_osf; /* avoid unused warnings */
+  (void)ds3231_clear_osf;
 #endif
 }
-/* ------------------------------------- */
 
 /*** ADC utils & mapping ***/
 static uint16_t adc_read_single(uint32_t ch){
@@ -475,7 +531,7 @@ static float soil_adc_to_percent(uint16_t adc){
   float pct = ((float)SOIL_ADC_DRY - (float)adc) * 100.0f / den;
   if (pct < 0.0f)   pct = 0.0f;
   if (pct > 100.0f) pct = 100.0f;
-  return pct;     // wet%
+  return pct;
 }
 static float rain_adc_to_wetpct(uint16_t adc){
   float num=(float)adc-(float)RAIN_ADC_WET, den=(float)RAIN_ADC_DRY-(float)RAIN_ADC_WET;
@@ -484,10 +540,6 @@ static float rain_adc_to_wetpct(uint16_t adc){
   if(pct_wet<0)pct_wet=0; if(pct_wet>100)pct_wet=100; return pct_wet;
 }
 static void update_rain_adc_debounce(void){
-  static uint32_t t_sample=0;
-  if (now_ms()-t_sample < RAIN_SAMPLE_MS) return;
-  t_sample = now_ms();
-
   uint16_t adc = adc_read_avg(RAIN_ADC_CH, RAIN_SMOOTH_N);
   dbg_rain_adc = adc;
   g_rain_percent = rain_adc_to_wetpct(adc);
@@ -575,10 +627,10 @@ static void lcd_show(void){
 
   const char* st = (state==ST_IDLE)?"IDLE":(state==ST_WATERING)?"WATERING":
                  (state==ST_COOLDOWN)?"COOLDOWN":"RAINLOCK";
-	const char* p  = (state==ST_WATERING) ? "ON" : "OFF";
-	const char* md = (g_mode==MODE_MANUAL) ? "M" : "A";
-	snprintf(tmp,sizeof(tmp),"C:%-8s P:%-3s M:%-1s", st, p, md);
-	pad20(ln20,tmp); lcd_put_line_if_changed(3, ln20);
+  const char* p  = (state==ST_WATERING) ? "ON" : "OFF";
+  const char* md = (g_mode==MODE_MANUAL) ? "M" : "A";
+  snprintf(tmp,sizeof(tmp),"C:%-8s P:%-3s M:%-1s", st, p, md);
+  pad20(ln20,tmp); lcd_put_line_if_changed(3, ln20);
 }
 
 /*** LED TX non-blocking ***/
@@ -598,10 +650,6 @@ static void txled_task(void){
 
 /*** RNG ***/
 static uint32_t rng_next(void){ rng_state = 1664525u*rng_state + 1013904223u; return rng_state; }
-static int32_t jitter_pm10pct_ms(uint32_t base_ms){
-  int32_t span = (int32_t)(base_ms/10);
-  return (int32_t)(rng_next()% (2*span+1)) - span;
-}
 
 /*** LoRa init ***/
 static void lora_init_params(void){
@@ -621,19 +669,19 @@ static void lora_init_params(void){
 
   uint16_t st = LoRa_init(&lora);
   if (st != LORA_OK) cdc_send_line("ERR: LoRa init");
-  else {		
-		cdc_send_line("LoRa OK");
-		// === GHI ĐÈ công suất theo dBm thật ===
-    int8_t desired_dbm = 17;                 // đổi số này: 2..17, hoặc 20 dBm
+  else {
+    cdc_send_line("LoRa OK");
+    int8_t desired_dbm = 17;
     LoRa_setPower_dBm(&lora, desired_dbm);
-    char s[32];
-    snprintf(s, sizeof(s), "TX power = %d dBm", desired_dbm);
+    char s[32]; snprintf(s, sizeof(s), "TX power = %d dBm", desired_dbm);
     cdc_send_line(s);
-	}
+  }
 
   LoRa_setTOMsb_setCRCon(&lora);
   g_sync_word = 0x34;
   LoRa_setSyncWord(&lora, g_sync_word);
+
+  LoRa_startReceiving(&lora);
 }
 
 /*** RF config log ***/
@@ -701,7 +749,7 @@ static void flash_debug_head_once(void) {
   cdc_send_line((char*)buf);
 }
 
-/*** === ISO-8601 helpers === */
+/*** ISO-8601 helpers ***/
 static void civil_from_days(int z, int *y, unsigned *m, unsigned *d){
   z += 719468;
   const int era = (z >= 0 ? z : z - 146096) / 146097;
@@ -714,271 +762,10 @@ static void civil_from_days(int z, int *y, unsigned *m, unsigned *d){
   *m  = mp + (mp < 10 ? 3 : -9);
   *y  = y2 + (*m <= 2);
 }
-static void iso8601_from_epoch_utc(uint32_t epoch, char *out, size_t n){
-  uint32_t day = epoch / 86400u;
-  uint32_t sec = epoch % 86400u;
-  unsigned hh = sec / 3600u;
-  unsigned mm = (sec % 3600u) / 60u;
-  unsigned ss = sec % 60u;
-  int y; unsigned mo, da;
-  civil_from_days((int)day, &y, &mo, &da);
-  snprintf(out, n, "%04d-%02u-%02uT%02u:%02u:%02uZ", y, mo, da, hh, mm, ss);
-}
-static void iso_from_tm_local(const struct tm* t, char *out, size_t n)
-{
+static void iso_from_tm_local(const struct tm* t, char *out, size_t n){
   snprintf(out, n, "%04d-%02d-%02d %02d:%02d:%02d",
            1900 + t->tm_year, t->tm_mon + 1, t->tm_mday,
            t->tm_hour, t->tm_min, t->tm_sec);
-}
-
-/* ===================== DATA Uplink ===================== */
-static void send_meas(bool forced){
-  (void)forced;
-  const char* st=(state==ST_IDLE)?"IDLE":(state==ST_WATERING)?"WATERING":
-                 (state==ST_COOLDOWN)?"COOLDOWN":"RAIN_LOCK";
-  int pump=(state==ST_WATERING)?1:0;
-
-  char iso[32] = "1970-01-01 00:00:00";
-  uint32_t ts_meta = 0;
-
-  /* ---- Lấy thời gian ---- */
-  struct tm t;
-  if (ds3231_get_tm(&t)) {
-    iso_from_tm_local(&t, iso, sizeof(iso));
-    ts_meta = tm_to_epoch_utc(&t);
-  } else {
-    uint32_t e = rtc_epoch_utc(); ts_meta = e;
-    uint32_t day = e / 86400u, sec=e%86400u;
-    unsigned hh = sec/3600u, mm=(sec%3600u)/60u, ss=sec%60u;
-    int y; unsigned mo, da; civil_from_days((int)day,&y,&mo,&da);
-    snprintf(iso, sizeof(iso), "%04d-%02u-%02u %02u:%02u:%02u", y,mo,da,hh,mm,ss);
-  }
-
-  uint32_t seq_sent = seq;
-
-  /* ---- Build core JSON (chưa có crc) ---- */
-  const char* mode_str = (g_mode==MODE_MANUAL) ? "MANUAL" : "AUTO";
-	int n = snprintf(json_no_crc, sizeof(json_no_crc),
-		"{\"ver\":1,\"node\":\"B\",\"type\":\"DATA\",\"seq\":%lu,"
-		"\"time\":\"%s\"," 
-		"\"soil\":%.2f,\"rainpct\":%.2f,\"rain\":%d,"
-		"\"rh\":%.2f,\"t\":%.2f,\"st\":\"%s\",\"pump\":%d,"
-		"\"dht_fault\":%d,\"hist\":0,\"mode\":\"%s\"}",
-		(unsigned long)seq_sent, iso,
-		g_soil_percent, isnan(g_rain_percent)?-1.0f:g_rain_percent, g_rain,
-		isnan(g_rh)?-1.0f:g_rh, isnan(g_temp_c)?-100.0f:g_temp_c,
-		st, pump, dht_fault, mode_str);
-  if(n<=0 || n >= (int)sizeof(json_no_crc)) return;
-
-  /* ---- CRC app-layer & gắn vào JSON ---- */
-  uint16_t crc = crc16_ccitt((const uint8_t*)json_no_crc, (size_t)n);
-  int m = snprintf(json_final, sizeof(json_final),
-                   "%.*s,\"crc\":\"%04X\"}", n-1, json_no_crc, crc);
-  if (m <= 0 || m >= (int)sizeof(json_final)) return;
-
-  /* ---- TX & ACK ---- */
-  txled_start(1,60,60);
-  uint8_t ok = LoRa_transmit(&lora, (uint8_t*)json_final, (uint8_t)strlen(json_final), TRANSMIT_TIMEOUT);
-
-#if ACK_ENABLE
-  uint8_t ack_ok = 0;
-  if (ok) {
-    LoRa_startReceiving(&lora);            // đảm bảo ở RXCONT
-    HAL_Delay(ACK_GUARD_MS);               // guard nhỏ trước khi GW phát ACK
-    ack_ok = lora_wait_ack(seq_sent, ACK_WINDOW_MS);
-  }
-  /* IN RA SAU KHI CHỜ ACK để CDC không chặn cửa sổ ACK */
-  cdc_send_line(json_final);
-
-  if (ok && ack_ok) { seq++; }
-  else { Log_Push((const uint8_t*)json_final, (uint16_t)strlen(json_final), LOG_TYPE_DATA, ts_meta); }
-#else
-  cdc_send_line(json_final);
-  if (!ok) Log_Push((const uint8_t*)json_final, (uint16_t)strlen(json_final), LOG_TYPE_DATA, ts_meta);
-  else seq++;
-#endif
-
-  /* ---- Khoảng trống sau uplink ---- */
-  tx_cooldown_wait();
-}
-
-/* ===================== EVENT/LOG Uplink ===================== */
-static void send_event(const char* ev){
-  char iso[32] = "1970-01-01 00:00:00";
-  uint32_t ts_meta = 0;
-
-  struct tm t;
-  if (ds3231_get_tm(&t)) {
-    iso_from_tm_local(&t, iso, sizeof(iso));
-    ts_meta = tm_to_epoch_utc(&t);
-  } else {
-    uint32_t e = rtc_epoch_utc(); ts_meta = e;
-    uint32_t day = e / 86400u, sec=e%86400u;
-    unsigned hh = sec/3600u, mm=(sec%3600u)/60u, ss=sec%60u;
-    int y; unsigned mo, da; civil_from_days((int)day,&y,&mo,&da);
-    snprintf(iso, sizeof(iso), "%04d-%02u-%02u %02u:%02u:%02u", y,mo,da,hh,mm,ss);
-  }
-
-  uint32_t seq_sent = seq;
-
-  const char* mode_str = (g_mode==MODE_MANUAL) ? "MANUAL" : "AUTO";
-	int n = snprintf(json_no_crc, sizeof(json_no_crc),
-		"{\"ver\":1,\"node\":\"B\",\"type\":\"LOG\",\"seq\":%lu,"
-		"\"time\":\"%s\",\"ev\":\"%s\",\"hist\":0,\"mode\":\"%s\"}",
-		(unsigned long)seq_sent, iso, ev, mode_str);
-  if(n<=0 || n >= (int)sizeof(json_no_crc)) return;
-
-  uint16_t crc = crc16_ccitt((const uint8_t*)json_no_crc, (size_t)n);
-  int m = snprintf(json_final, sizeof(json_final),
-                   "%.*s,\"crc\":\"%04X\"}", n-1, json_no_crc, crc);
-  if (m <= 0 || m >= (int)sizeof(json_final)) return;
-
-  txled_start(1,60,60);
-  uint8_t ok = LoRa_transmit(&lora, (uint8_t*)json_final, (uint8_t)strlen(json_final), TRANSMIT_TIMEOUT);
-
-#if ACK_ENABLE
-  uint8_t ack_ok = 0;
-  if (ok) {
-    LoRa_startReceiving(&lora);
-    HAL_Delay(ACK_GUARD_MS);
-    ack_ok = lora_wait_ack(seq_sent, ACK_WINDOW_MS);
-  }
-  cdc_send_line(json_final);
-
-  if (ok && ack_ok) { seq++; }
-  else { Log_Push((const uint8_t*)json_final, (uint16_t)strlen(json_final), LOG_TYPE_EVENT, ts_meta); }
-#else
-  cdc_send_line(json_final);
-  if (!ok) Log_Push((const uint8_t*)json_final, (uint16_t)strlen(json_final), LOG_TYPE_EVENT, ts_meta);
-  else seq++;
-#endif
-
-  /* ---- Khoảng trống sau uplink ---- */
-  tx_cooldown_wait();
-}
-
-/*** Change detection policy ***/
-static inline int changed_for_meas(void){
-  if(isnan(snap_soil)   || fabsf(snap_soil - g_soil_percent) > 1.5f) return 1;
-  if(isnan(snap_rainpct)|| fabsf(snap_rainpct - g_rain_percent)>10.0f) return 1;
-  if(!dht_fault){
-    if(isnan(snap_t)    || fabsf(snap_t - g_temp_c) > 0.8f) return 1;
-    if(isnan(snap_rh)   || fabsf(snap_rh - g_rh)    > 3.0f) return 1;
-  }
-  if(snap_rain != (int)g_rain) return 1;
-  if(snap_pump != (state==ST_WATERING)) return 1;
-  if(snap_dht  != dht_fault) return 1;
-  return 0;
-}
-static inline void snapshot_meas(void){
-  snap_soil=g_soil_percent; snap_rainpct=g_rain_percent; snap_t=g_temp_c; snap_rh=g_rh;
-  snap_rain=g_rain; snap_pump=(state==ST_WATERING); snap_dht=dht_fault;
-}
-
-static void heartbeat_task(void){
-  /* Guard chống đụng ACK: chưa đủ post-gap thì không gửi thêm */
-  if ((HAL_GetTick() - s_last_ul_ms) < TX_POST_GAP_MS) return;
-
-  uint32_t now = now_ms();
-  if (now >= next_hb_due){
-    send_meas(false);
-    snapshot_meas();
-    next_hb_due = now + HEARTBEAT_MS;   /* gửi đều mỗi 4s, không jitter */
-  }
-}
-
-/*** FSM ***/
-static uint8_t rh_allows_watering(void){
-  if(dht_fault) return 1;
-  if(isnan(g_rh)) return 1;
-  return (g_rh < RH_BLOCK_TH) ? 1 : 0;
-}
-static void fsm_step(void){
-	// Neu MANUAL: bo qua dieu khien tu dong, nhung van cat an toan neu on qua lau
-	if (g_mode == MODE_MANUAL) {
-		if (state == ST_WATERING && (now_ms() - t_onStart) > MAX_ON_TIME_MS) {
-			RELAY_OFF(); t_coolStart = now_ms(); state = ST_COOLDOWN;
-			send_event("SAFETY_MAX_ON");
-		}
-		return;
-	}
-  switch(state){
-  case ST_IDLE:
-    if(g_rain==1){ state=ST_RAIN_LOCK; t_rainStart=now_ms(); RELAY_OFF(); send_event("RAIN_LOCK"); break; }
-    if(!isnan(g_soil_percent) && g_soil_percent<SOIL_ON_TH && rh_allows_watering()){
-      RELAY_ON(); t_onStart=now_ms(); state=ST_WATERING; send_event("WATER_ON");
-    }
-    break;
-  case ST_WATERING:
-    if(g_rain==1 ||
-       (!isnan(g_soil_percent) && g_soil_percent>SOIL_OFF_TH) ||
-       (now_ms()-t_onStart)>MAX_ON_TIME_MS ||
-       (now_ms()-t_onStart)>SOAK_ON_MS)
-    { RELAY_OFF(); t_coolStart=now_ms(); state=ST_COOLDOWN; send_event("WATER_OFF"); }
-    break;
-  case ST_COOLDOWN:
-    if(g_rain==1){ state=ST_RAIN_LOCK; t_rainStart=now_ms(); send_event("RAIN_LOCK"); break; }
-    if((now_ms()-t_coolStart)>COOLDOWN_MS || (now_ms()-t_coolStart)>SOAK_OFF_MS)
-      state=ST_IDLE;
-    break;
-  case ST_RAIN_LOCK:
-    RELAY_OFF();
-    if(g_rain==0 && (now_ms()-t_rainStart)>RAIN_LOCK_MS) { state=ST_IDLE; send_event("RAIN_CLEAR"); }
-    break;
-  }
-}
-
-/*** LEDs ***/
-static void leds_update(void){
-  if(state==ST_WATERING) LEDW_ON(); else LEDW_OFF();
-  if(g_rain) LEDR_ON();
-  else if(state==ST_RAIN_LOCK){ if(((now_ms()/500)%2)==0) LEDR_ON(); else LEDR_OFF(); }
-  else LEDR_OFF();
-}
-
-/*** debug raw adc ***/
-static void diag_dump_raw(void){
-  uint16_t a0 = adc_read_avg(SOIL_ADC_CH, 32);
-  uint16_t a1 = adc_read_avg(RAIN_ADC_CH, 32);
-  char line[64];
-  snprintf(line, sizeof(line), "RAW ADC: A0(Soil)=%u  A1(Rain)=%u", a0, a1);
-  cdc_send_line(line);
-}
-
-/*** Replay task === gửi lại từ flash nếu có ***/
-static void replay_task(void){
-  uint8_t  buf[256];
-  uint16_t len; uint8_t type; uint32_t ts;
-
-  int burst = 3;
-  while (burst-- > 0 && !Log_Empty()){
-    if (!Log_Peek(buf, sizeof(buf)-1, &len, &type, &ts)) break;
-    buf[len] = '\0';
-
-    (void)uplink_set_hist_and_fix_crc((char*)buf, sizeof(buf), 1);
-
-    txled_start(1,60,60);
-    uint8_t ok = LoRa_transmit(&lora, buf, (uint8_t)strlen((char*)buf), TRANSMIT_TIMEOUT);
-
-#if ACK_ENABLE
-    uint32_t seq_sent = (uint32_t)json_extract_int((char*)buf, "\"seq\"", -1);
-    uint8_t ack_ok = 0;
-    if (ok) {
-      LoRa_startReceiving(&lora);
-      HAL_Delay(ACK_GUARD_MS);
-      ack_ok = lora_wait_ack(seq_sent, ACK_WINDOW_MS);
-    }
-    cdc_send_line((char*)buf);          // in SAU khi chờ ACK
-
-    if (ok && ack_ok) { Log_Drop(); }   // thành công -> bỏ khỏi queue
-    else { tx_cooldown_wait(); break; } // thất bại -> dừng burst để retry lần sau
-#else
-    cdc_send_line((char*)buf);
-    if (ok) Log_Drop(); else { tx_cooldown_wait(); break; }
-#endif
-
-    tx_cooldown_wait();                  // gap giữa các gói trong burst
-  }
 }
 
 /* === Time helpers === */
@@ -1035,44 +822,37 @@ static int json_extract_int(const char* json, const char* key, int defval){
   return sign*val;
 }
 
-/* ==== Apply CMD from ACK JSON ========================================== */
+/* ==== Apply CMD from ACK JSON ==== */
 static void apply_cmd_from_ack(const char* json)
 {
     if (!json) return;
 
     int any_cmd_applied = 0;
 
-    // Đọc tham số (có thể ở dạng số hoặc chuỗi)
-    int pump     = json_extract_int(json, "\"pump\"", -2);    // 0/1 (không có -> -2)
-    int mode_num = json_extract_int(json, "\"mode\"", -1);    // 0/1 nếu mode được gửi dạng số
-    int override = json_extract_int(json, "\"override\"", 0); // không dùng logic riêng, chỉ để tương thích
+    int pump     = json_extract_int(json, "\"pump\"", -2);
+    int mode_num = json_extract_int(json, "\"mode\"", -1);
+    int override = json_extract_int(json, "\"override\"", 0);
+    (void)override;
 
-    // --- Xử lý lệnh pump ---
     if (pump != -2) {
-        // Bất kỳ lệnh pump đều chuyển sang MANUAL để tránh FSM tự can thiệp
         g_mode = MODE_MANUAL;
 
         if (pump > 0) {
-            // Cưỡng bức trạng thái tưới để LCD/uplink hiển thị đúng ngay
             RELAY_ON();
             state      = ST_WATERING;
-            t_onStart  = now_ms();     // reset bộ đếm an toàn
-            cdc_send_line("[CMD] pump=1 -> RELAY_ON (force WATERING)");
+            t_onStart  = now_ms();
+            cdc_send_line("[CMD] pump=1 -> RELAY_ON");
         } else {
             RELAY_OFF();
-            // Nếu đang tưới thì chuyển sang cooldown; nếu đang RAIN_LOCK thì giữ nguyên
             if (state == ST_WATERING || state == ST_IDLE) {
                 state       = ST_COOLDOWN;
                 t_coolStart = now_ms();
             }
             cdc_send_line("[CMD] pump=0 -> RELAY_OFF");
         }
-
         any_cmd_applied = 1;
     }
 
-    // --- Xử lý lệnh mode ---
-    // Hỗ trợ cả mode dạng số (0/1) lẫn chuỗi "AUTO"/"MANUAL"
     if (mode_num == 0 || strstr(json, "\"mode\":\"AUTO\"")) {
         g_mode = MODE_AUTO;
         cdc_send_line("[CMD] mode=AUTO");
@@ -1083,68 +863,372 @@ static void apply_cmd_from_ack(const char* json)
         any_cmd_applied = 1;
     }
 
-    // --- Hậu xử lý chung ---
     if (any_cmd_applied) {
-        // Gia hạn thời gian MANUAL (auto-recover về AUTO sẽ dựa trên biến này)
         t_last_cmd_ms = now_ms();
-
-        // Nếu lệnh không buộc AUTO thì chắc chắn ở MANUAL để lệnh có hiệu lực bền vững
         if (!(mode_num == 0 || strstr(json, "\"mode\":\"AUTO\""))) {
             g_mode = MODE_MANUAL;
         }
-
-        // Cập nhật hiển thị/đèn ngay
         snapshot_prev();
         lcd_show();
         leds_update();
     }
 }
 
-/* ==== RX ACK window: confirm & apply CMD ================================= */
-static uint8_t lora_wait_ack(uint32_t expected_seq, uint16_t window_ms)
+/* ===================== TX QUEUE ===================== */
+static uint8_t txq_is_full(void){ return (txq_cnt >= TXQ_SIZE); }
+static uint8_t txq_is_empty(void){ return (txq_cnt == 0); }
+
+static uint8_t txq_push(const char* payload, uint16_t len, uint32_t seq_expected,
+                        uint32_t ts_meta, uint8_t log_type, uint8_t from_flash)
 {
-  uint32_t t0 = HAL_GetTick();
-  uint8_t  rx[128];
+  if (!payload || len == 0) return 0;
+  if (len >= TX_ITEM_MAX) return 0;
+  if (txq_is_full()) return 0;
 
-  LoRa_startReceiving(&lora);   // đảm bảo đang ở RXCONT
-  while ((uint32_t)(HAL_GetTick() - t0) < (uint32_t)window_ms) {
-    uint8_t n = LoRa_receive(&lora, rx, sizeof(rx) - 1);
-    if (n > 0) {
-      rx[n] = '\0';
+  tx_item_t* it = &txq[txq_tail];
+  memset(it, 0, sizeof(*it));
+  it->used = 1;
+  it->from_flash = from_flash;
+  it->log_type = log_type;
+  it->ts_meta = ts_meta;
+  it->seq_expected = seq_expected;
+  it->len = len;
+  memcpy(it->buf, payload, len);
+  it->buf[len] = '\0';
 
-      /* in log gọn để quan sát */
-      char line[160];
-      int cut = (n > 100) ? 100 : n;
-      snprintf(line, sizeof(line), "[ACK RX] len=%u payload=\"%.*s\"",
-               (unsigned)n, cut, (char*)rx);
-      cdc_send_line(line);
+  txq_tail = (uint8_t)((txq_tail + 1) % TXQ_SIZE);
+  txq_cnt++;
+  return 1;
+}
 
-      int a = json_extract_int((const char*)rx, "\"ack\"", -1);
-      int s = json_extract_int((const char*)rx, "\"seq\"", -1);
+static uint8_t txq_pop(tx_item_t* out)
+{
+  if (!out) return 0;
+  if (txq_is_empty()) return 0;
 
-      if ((a >= 0 && (uint32_t)a == expected_seq) ||
-          (s >= 0 && (uint32_t)s == expected_seq)) {
-        cdc_send_line("[ACK] received");
+  tx_item_t* it = &txq[txq_head];
+  *out = *it;
 
-        /* nếu có field "cmd", áp dụng lệnh */
-        if (strstr((const char*)rx, "\"cmd\"")) {
-          apply_cmd_from_ack((const char*)rx);
-        }
-        return 1;
-      }
-      /* nếu không khớp seq -> bỏ qua, tiếp tục lắng nghe trong cửa sổ */
-    }
+  memset(it, 0, sizeof(*it));
+  txq_head = (uint8_t)((txq_head + 1) % TXQ_SIZE);
+  txq_cnt--;
+  return 1;
+}
+
+/* ===================== TX MANAGER (NON-BLOCKING) ===================== */
+static void tx_start_current(const tx_item_t* it)
+{
+  if (!it || it->len == 0) return;
+
+  txled_start(1,60,60);
+
+  uint8_t ok = LoRa_transmit(&lora, (uint8_t*)it->buf, (uint8_t)it->len, TRANSMIT_TIMEOUT);
+
+  cdc_send_line(it->buf);
+
+  if (!ok) {
+    tx_finish_fail();
+    return;
   }
-  cdc_send_line("[ACK] timeout");
+
+#if ACK_ENABLE
+  LoRa_startReceiving(&lora);
+  tx_guard_until = now_ms() + ACK_GUARD_MS;
+  tx_ack_deadline = now_ms() + ACK_WINDOW_MS;
+  txs = TXS_WAIT_GUARD;
+#else
+  tx_finish_success();
+#endif
+}
+
+static void tx_finish_success(void)
+{
+  if (cur_tx.from_flash) {
+    Log_Drop();
+  } else {
+    seq++;
+  }
+  tx_count++;
+  tx_cool_until = now_ms() + TX_POST_GAP_MS;
+  txs = TXS_COOLDOWN;
+}
+
+static void tx_finish_fail(void)
+{
+  if (!cur_tx.from_flash) {
+    Log_Push((const uint8_t*)cur_tx.buf, cur_tx.len, cur_tx.log_type, cur_tx.ts_meta);
+  } else {
+    replay_backoff_until = now_ms() + 2000u + (rng_next() % 3000u);
+  }
+  tx_cool_until = now_ms() + TX_POST_GAP_MS;
+  txs = TXS_COOLDOWN;
+}
+
+static uint8_t tx_handle_rx_and_check_ack(uint32_t expected_seq)
+{
+  uint8_t rx[128];
+  uint8_t n = LoRa_receive(&lora, rx, sizeof(rx) - 1);
+  if (n == 0) return 0;
+
+  rx[n] = '\0';
+  char line[160];
+  int cut = (n > 100) ? 100 : n;
+  snprintf(line, sizeof(line), "[ACK RX] len=%u payload=\"%.*s\"", (unsigned)n, cut, (char*)rx);
+  cdc_send_line(line);
+
+  int a = json_extract_int((const char*)rx, "\"ack\"", -1);
+  int s = json_extract_int((const char*)rx, "\"seq\"", -1);
+
+  if ((a >= 0 && ((uint32_t)a == expected_seq || (uint32_t)a == (expected_seq + 1u))) ||
+      (s >= 0 && ((uint32_t)s == expected_seq || (uint32_t)s == (expected_seq + 1u)))) {
+    cdc_send_line("[ACK] received");
+    if (strstr((const char*)rx, "\"cmd\"")) {
+      apply_cmd_from_ack((const char*)rx);
+    }
+    return 1;
+  }
   return 0;
 }
 
-/* Set RTC default once using Backup register (optional) */
-static void RTC_SetOnce_IfNeeded(void){
-  uint32_t magic = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR1);
-  if (magic == 0xBEEF){
+static void tx_task(void)
+{
+  uint32_t now = now_ms();
+
+  if (txs == TXS_COOLDOWN) {
+    if ((int32_t)(now - tx_cool_until) >= 0) txs = TXS_IDLE;
+    else return;
+  }
+
+  if (txs == TXS_WAIT_GUARD) {
+    if ((int32_t)(now - tx_guard_until) >= 0) txs = TXS_WAIT_ACK;
+    else return;
+  }
+
+  if (txs == TXS_WAIT_ACK) {
+    if (tx_handle_rx_and_check_ack(cur_tx.seq_expected)) { tx_finish_success(); return; }
+    if ((int32_t)(now - tx_ack_deadline) >= 0) { cdc_send_line("[ACK] timeout"); tx_finish_fail(); return; }
     return;
   }
+
+  if (txs != TXS_IDLE) return;
+  if ((int32_t)(now - tx_cool_until) < 0) return;
+
+  if (!txq_is_empty()) {
+    if (txq_pop(&cur_tx)) tx_start_current(&cur_tx);
+    return;
+  }
+
+  if (!Log_Empty() && (int32_t)(now - replay_backoff_until) >= 0) {
+    uint8_t  buf[TX_ITEM_MAX];
+    uint16_t len; uint8_t type; uint32_t ts;
+
+    if (Log_Peek(buf, sizeof(buf)-1, &len, &type, &ts)) {
+      buf[len] = '\0';
+      (void)uplink_set_hist_and_fix_crc((char*)buf, sizeof(buf), 1);
+
+      uint32_t seq_sent = (uint32_t)json_extract_int((char*)buf, "\"seq\"", -1);
+
+      if (txq_push((const char*)buf, (uint16_t)strlen((char*)buf), seq_sent, ts, type, 1)) {
+        if (txq_pop(&cur_tx)) tx_start_current(&cur_tx);
+      }
+    }
+  }
+}
+
+/* ===================== DATA/LOG REQUEST (enqueue) ===================== */
+static void send_meas_request(bool forced)
+{
+  (void)forced;
+
+  const char* st=(state==ST_IDLE)?"IDLE":(state==ST_WATERING)?"WATERING":
+                 (state==ST_COOLDOWN)?"COOLDOWN":"RAIN_LOCK";
+  int pump=(state==ST_WATERING)?1:0;
+
+  char iso[32] = "1970-01-01 00:00:00";
+  uint32_t ts_meta = 0;
+
+  struct tm t;
+  if (ds3231_get_tm(&t)) {
+    iso_from_tm_local(&t, iso, sizeof(iso));
+    ts_meta = tm_to_epoch_utc(&t);
+#if DS3231_HOLDS_LOCAL && (TZ_OFFSET_SECS != 0)
+    if (ts_meta >= (uint32_t)TZ_OFFSET_SECS) ts_meta -= (uint32_t)TZ_OFFSET_SECS;
+#endif
+  } else {
+    ts_meta = rtc_epoch_utc();
+    uint32_t day = ts_meta / 86400u, sec=ts_meta%86400u;
+    unsigned hh = sec/3600u, mm=(sec%3600u)/60u, ss=sec%60u;
+    int y; unsigned mo, da; civil_from_days((int)day,&y,&mo,&da);
+    snprintf(iso, sizeof(iso), "%04d-%02u-%02u %02u:%02u:%02u", y,mo,da,hh,mm,ss);
+  }
+
+  uint32_t seq_sent = seq;
+  const char* mode_str = (g_mode==MODE_MANUAL) ? "MANUAL" : "AUTO";
+
+  int n = snprintf(json_no_crc, sizeof(json_no_crc),
+    "{\"ver\":1,\"node\":\"%s\",\"type\":\"DATA\",\"seq\":%lu,"
+    "\"time\":\"%s\",\"soil\":%.2f,\"rainpct\":%.2f,\"rain\":%d,"
+    "\"rh\":%.2f,\"t\":%.2f,\"st\":\"%s\",\"pump\":%d,"
+    "\"dht_fault\":%d,\"hist\":0,\"mode\":\"%s\"}",
+    NODE_ID_STR, (unsigned long)seq_sent, iso,
+    g_soil_percent, isnan(g_rain_percent)?-1.0f:g_rain_percent, g_rain,
+    isnan(g_rh)?-1.0f:g_rh, isnan(g_temp_c)?-100.0f:g_temp_c,
+    st, pump, dht_fault, mode_str);
+  if(n<=0 || n >= (int)sizeof(json_no_crc)) return;
+
+  uint16_t crc = crc16_ccitt((const uint8_t*)json_no_crc, (size_t)n);
+
+  char json_final[TX_ITEM_MAX];
+  int m = snprintf(json_final, sizeof(json_final),
+                   "%.*s,\"crc\":\"%04X\"}", n-1, json_no_crc, crc);
+  if (m <= 0 || m >= (int)sizeof(json_final)) return;
+
+  if (!txq_push(json_final, (uint16_t)strlen(json_final), seq_sent, ts_meta, LOG_TYPE_DATA, 0)) {
+    cdc_send_line("[TXQ] full, skip meas");
+  }
+}
+
+static void send_event_request(const char* ev)
+{
+  if (!ev) return;
+
+  char iso[32] = "1970-01-01 00:00:00";
+  uint32_t ts_meta = 0;
+
+  struct tm t;
+  if (ds3231_get_tm(&t)) {
+    iso_from_tm_local(&t, iso, sizeof(iso));
+    ts_meta = tm_to_epoch_utc(&t);
+#if DS3231_HOLDS_LOCAL && (TZ_OFFSET_SECS != 0)
+    if (ts_meta >= (uint32_t)TZ_OFFSET_SECS) ts_meta -= (uint32_t)TZ_OFFSET_SECS;
+#endif
+  } else {
+    ts_meta = rtc_epoch_utc();
+    uint32_t day = ts_meta / 86400u, sec=ts_meta%86400u;
+    unsigned hh = sec/3600u, mm=(sec%3600u)/60u, ss=sec%60u;
+    int y; unsigned mo, da; civil_from_days((int)day,&y,&mo,&da);
+    snprintf(iso, sizeof(iso), "%04d-%02u-%02u %02u:%02u:%02u", y,mo,da,hh,mm,ss);
+  }
+
+  uint32_t seq_sent = seq;
+  const char* mode_str = (g_mode==MODE_MANUAL) ? "MANUAL" : "AUTO";
+
+  int n = snprintf(json_no_crc, sizeof(json_no_crc),
+    "{\"ver\":1,\"node\":\"%s\",\"type\":\"LOG\",\"seq\":%lu,"
+    "\"time\":\"%s\",\"st\":\"%s\",\"hist\":0,\"mode\":\"%s\"}",
+    NODE_ID_STR, (unsigned long)seq_sent, iso, ev, mode_str);
+  if(n<=0 || n >= (int)sizeof(json_no_crc)) return;
+
+  uint16_t crc = crc16_ccitt((const uint8_t*)json_no_crc, (size_t)n);
+
+  char json_final[TX_ITEM_MAX];
+  int m = snprintf(json_final, sizeof(json_final),
+                   "%.*s,\"crc\":\"%04X\"}", n-1, json_no_crc, crc);
+  if (m <= 0 || m >= (int)sizeof(json_final)) return;
+
+  if (!txq_push(json_final, (uint16_t)strlen(json_final), seq_sent, ts_meta, LOG_TYPE_EVENT, 0)) {
+    Log_Push((const uint8_t*)json_final, (uint16_t)strlen(json_final), LOG_TYPE_EVENT, ts_meta);
+    cdc_send_line("[TXQ] full -> event pushed to FLASH");
+  }
+}
+
+/*** Change detection policy ***/
+static inline int changed_for_meas(void){
+  if(isnan(snap_soil)   || fabsf(snap_soil - g_soil_percent) > 1.5f) return 1;
+  if(isnan(snap_rainpct)|| fabsf(snap_rainpct - g_rain_percent)>10.0f) return 1;
+  if(!dht_fault){
+    if(isnan(snap_t)    || fabsf(snap_t - g_temp_c) > 0.8f) return 1;
+    if(isnan(snap_rh)   || fabsf(snap_rh - g_rh)    > 3.0f) return 1;
+  }
+  if(snap_rain != (int)g_rain) return 1;
+  if(snap_pump != (state==ST_WATERING)) return 1;
+  if(snap_dht  != dht_fault) return 1;
+  return 0;
+}
+static inline void snapshot_meas(void){
+  snap_soil=g_soil_percent; snap_rainpct=g_rain_percent; snap_t=g_temp_c; snap_rh=g_rh;
+  snap_rain=g_rain; snap_pump=(state==ST_WATERING); snap_dht=dht_fault;
+}
+
+static void heartbeat_kick_task(void){
+  uint32_t now = now_ms();
+  if (now >= next_hb_due){
+#if ONLY_TX_ON_CHANGE
+    if (changed_for_meas()) {
+      send_meas_request(false);
+      snapshot_meas();
+    }
+#else
+    send_meas_request(false);
+    snapshot_meas();
+#endif
+    next_hb_due = now + HEARTBEAT_MS + (rng_next() % HEARTBEAT_JITTER_MS);
+  }
+}
+
+/*** FSM ***/
+static uint8_t rh_allows_watering(void){
+  if(dht_fault) return 1;
+  if(isnan(g_rh)) return 1;
+  return (g_rh < RH_BLOCK_TH) ? 1 : 0;
+}
+static void fsm_step(void){
+  if (g_mode == MODE_MANUAL) {
+    if (state == ST_WATERING && (now_ms() - t_onStart) > MAX_ON_TIME_MS) {
+      RELAY_OFF(); t_coolStart = now_ms(); state = ST_COOLDOWN;
+      send_event_request("SAFETY_MAX_ON");
+    }
+    return;
+  }
+  switch(state){
+  case ST_IDLE:
+    if(g_rain==1){ state=ST_RAIN_LOCK; t_rainStart=now_ms(); RELAY_OFF(); send_event_request("RAIN_LOCK"); break; }
+    if(!isnan(g_soil_percent) && g_soil_percent<SOIL_ON_TH && rh_allows_watering()){
+      RELAY_ON(); t_onStart=now_ms(); state=ST_WATERING; send_event_request("WATER_ON");
+    }
+    break;
+  case ST_WATERING:
+    if(g_rain==1 ||
+       (!isnan(g_soil_percent) && g_soil_percent>SOIL_OFF_TH) ||
+       (now_ms()-t_onStart)>MAX_ON_TIME_MS ||
+       (now_ms()-t_onStart)>SOAK_ON_MS)
+    { RELAY_OFF(); t_coolStart=now_ms(); state=ST_COOLDOWN; send_event_request("WATER_OFF"); }
+    break;
+  case ST_COOLDOWN:
+    if(g_rain==1){ state=ST_RAIN_LOCK; t_rainStart=now_ms(); send_event_request("RAIN_LOCK"); break; }
+    if((now_ms()-t_coolStart)>COOLDOWN_MS || (now_ms()-t_coolStart)>SOAK_OFF_MS)
+      state=ST_IDLE;
+    break;
+  case ST_RAIN_LOCK:
+    RELAY_OFF();
+    if(g_rain==0 && (now_ms()-t_rainStart)>RAIN_LOCK_MS) { state=ST_IDLE; send_event_request("RAIN_CLEAR"); }
+    break;
+  }
+}
+
+/*** LEDs ***/
+static void leds_update(void){
+  if(state==ST_WATERING) LEDW_ON(); else LEDW_OFF();
+  if(g_rain) LEDR_ON();
+  else if(state==ST_RAIN_LOCK){ if(((now_ms()/500)%2)==0) LEDR_ON(); else LEDR_OFF(); }
+  else LEDR_OFF();
+
+  if (state == ST_WATERING) LED_PUMP_ON(); else LED_PUMP_OFF();
+  if (g_mode == MODE_MANUAL) LED_MODE_ON(); else LED_MODE_OFF();
+}
+
+static void diag_dump_raw(void){
+  uint16_t a0 = adc_read_avg(SOIL_ADC_CH, 32);
+  uint16_t a1 = adc_read_avg(RAIN_ADC_CH, 32);
+  char line[64];
+  snprintf(line, sizeof(line), "RAW ADC: A0(Soil)=%u  A1(Rain)=%u", a0, a1);
+  cdc_send_line(line);
+}
+
+static void RTC_SetOnce_IfNeeded(void){
+  uint32_t magic = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR1);
+  if (magic == 0xBEEF) return;
+
   RTC_TimeTypeDef t = {0};
   RTC_DateTypeDef d = {0};
   t.Hours = 0; t.Minutes = 0; t.Seconds = 5;
@@ -1155,15 +1239,49 @@ static void RTC_SetOnce_IfNeeded(void){
   HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR1, 0xBEEF);
 }
 
-/* Uplink cooldown (blocking phiên bản đơn giản) */
-static void tx_cooldown_wait(void){
-  uint32_t now = HAL_GetTick();
-  uint32_t elapsed = now - s_last_ul_ms;
-  if (elapsed < TX_POST_GAP_MS) {
-    HAL_Delay(TX_POST_GAP_MS - elapsed);
+/* Buttons debounce */
+typedef struct {
+  uint8_t stable;
+  uint8_t last_raw;
+  uint32_t t_edge;
+} btn_db_t;
+
+static btn_db_t b_mode = {0,0,0}, b_pump = {0,0,0};
+#define DEBOUNCE_MS 30u
+
+static uint8_t debounce_step(btn_db_t *b, uint8_t raw_now){
+  if (raw_now != b->last_raw){ b->last_raw = raw_now; b->t_edge = now_ms(); }
+  if ((uint32_t)(now_ms() - b->t_edge) >= DEBOUNCE_MS){
+    if (b->stable != raw_now){
+      uint8_t prev = b->stable;
+      b->stable = raw_now;
+      return (prev == 0 && b->stable == 1);
+    }
   }
-  s_last_ul_ms = HAL_GetTick();     // chốt mốc mới
+  return 0;
 }
+
+static void buttons_task(void){
+  if (debounce_step(&b_mode, BTN_MODE_PRESSED())){
+    if (g_mode == MODE_AUTO){
+      g_mode = MODE_MANUAL; t_last_cmd_ms = now_ms(); send_event_request("MODE_MANUAL_BTN");
+    } else {
+      g_mode = MODE_AUTO;   send_event_request("MODE_AUTO_BTN");
+    }
+  }
+
+  if (g_mode == MODE_MANUAL && debounce_step(&b_pump, BTN_PUMP_PRESSED())){
+    if (state == ST_WATERING){
+      RELAY_OFF(); state = ST_COOLDOWN; t_coolStart = now_ms();
+      send_event_request("PUMP_OFF_BTN");
+    } else {
+      RELAY_ON();  state = ST_WATERING; t_onStart = now_ms();
+      send_event_request("PUMP_ON_BTN");
+    }
+    t_last_cmd_ms = now_ms();
+  }
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -1177,7 +1295,7 @@ int main(void)
 
   MX_GPIO_Init();
   MX_I2C1_Init();
-  MX_I2C2_Init();          /* I2C2 cho DS3231 */
+  MX_I2C2_Init();
   MX_SPI1_Init();
   MX_USB_DEVICE_Init();
   MX_ADC1_Init();
@@ -1187,7 +1305,6 @@ int main(void)
   RTC_SetOnce_IfNeeded();
 #endif
 
-  /* --- Ghi DS3231 AN TOÀN (chỉ khi cần) --- */
   DS3231_SetOnce_Safe();
 
   /* USER CODE BEGIN 2 */
@@ -1197,7 +1314,6 @@ int main(void)
   lora_init_params();
   log_rf_config();
 
-  /* DS3231 check log */
   {
     struct tm t;
     if (ds3231_get_tm(&t)){
@@ -1210,13 +1326,11 @@ int main(void)
     }
   }
 
-  /* W25Q32 prepare */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET); // CS high nếu dùng PB12
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
   W25Q_ForceSPI2_Mode0();
   W25Q_ReleasePowerDown();
-
   W25Q_Reset();
-  g_w25_id = W25Q_ReadID();   // expect 0xEF4016
+  g_w25_id = W25Q_ReadID();
   Log_Init();
   { char info[48]; snprintf(info,sizeof(info),"FLASH: JEDEC=0x%06lX", (unsigned long)g_w25_id); cdc_send_line(info); }
 
@@ -1228,13 +1342,21 @@ int main(void)
   snapshot_prev();
 
   txled_start(3,80,80);
-  cdc_send_line("BOOT: Node ready");
+  cdc_send_line("BOOT: Node B ready");
 
-  rng_state ^= (uint32_t)HAL_GetUIDw0() ^ (now_ms()<<16);
+  /* seed RNG: uid + tick */
+  rng_state ^= (uint32_t)HAL_GetUIDw0() ^ (uint32_t)HAL_GetUIDw1() ^ (uint32_t)HAL_GetUIDw2() ^ (now_ms()<<16);
 
-  next_hb_due = now_ms() + HEARTBEAT_MS;
+  /* ========== LECH PHA NGAY TU DAU (KHAC NODE A) ========== */
+  next_hb_due = now_ms()
+              + hb_phase_offset_ms()
+              + (rng_next() % HEARTBEAT_JITTER_MS);
 
   snapshot_meas();
+
+  t_rain_last = now_ms();
+  t_meas_last = now_ms();
+
 #if DEBUG_RAW_EVERY_MS > 0
   t_dbg_last = now_ms();
 #endif
@@ -1248,12 +1370,12 @@ int main(void)
     uint32_t now = now_ms();
 
     if ((uint32_t)(now - t_rain_last) >= (uint32_t)RAIN_SAMPLE_MS) {
-      t_rain_last += RAIN_SAMPLE_MS;
+      t_rain_last = now;
       update_rain_adc_debounce();
     }
 
     if ((uint32_t)(now - t_meas_last) >= 3000u) {
-      t_meas_last += 3000u;
+      t_meas_last = now;
       update_soil_and_dht();
       if (changed_enough()) { lcd_show(); snapshot_prev(); }
     }
@@ -1273,14 +1395,16 @@ int main(void)
     }
 #endif
 
-    replay_task();
-		heartbeat_task();
-		// Auto-recover: neu MANUAL va qua 60s khong co lenh moi -> ve AUTO
-		if (g_mode == MODE_MANUAL && (now_ms() - t_last_cmd_ms) > MANUAL_TIMEOUT_MS) {
-			g_mode = MODE_AUTO;
-			send_event("MODE_AUTO_RESUME");
-		}
+    heartbeat_kick_task();
+    tx_task();
+
+    if (g_mode == MODE_MANUAL && (now_ms() - t_last_cmd_ms) > MANUAL_TIMEOUT_MS) {
+      g_mode = MODE_AUTO;
+      send_event_request("MODE_AUTO_RESUME");
+    }
+
     fsm_step();
+    buttons_task();
     leds_update();
     txled_task();
   }
@@ -1296,12 +1420,10 @@ void SystemClock_Config(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-  /* Backup domain access */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_RCC_BKP_CLK_ENABLE();
   HAL_PWR_EnableBkUpAccess();
 
-  /* Oscillators */
   RCC_OscInitStruct.OscillatorType   = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE|RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSEState         = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue   = RCC_HSE_PREDIV_DIV1;
@@ -1312,7 +1434,6 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLMUL       = RCC_PLL_MUL9;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) { Error_Handler(); }
 
-  /* Clocks */
   RCC_ClkInitStruct.ClockType      = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                                    |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_PLLCLK;
@@ -1321,16 +1442,12 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK) { Error_Handler(); }
 
-  /* Peripherals clock */
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC|RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_USB;
   PeriphClkInit.AdcClockSelection    = RCC_ADCPCLK2_DIV6;
   PeriphClkInit.UsbClockSelection    = RCC_USBCLKSOURCE_PLL_DIV1_5;
   PeriphClkInit.RTCClockSelection    = RCC_RTCCLKSOURCE_LSE;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) { Error_Handler(); }
 }
-
-/* USER CODE BEGIN 4 */
-/* USER CODE END 4 */
 
 void Error_Handler(void)
 {
